@@ -1,0 +1,8 @@
+{
+  "name": "多元宇宙與迷因梗大學高級畢業證書產生器",
+  "description": "一鍵生成拍手黑貓、水豚、吉伊卡哇、哥吉拉等迷因名校畢業證書，支援橫式與直式證書切換、雙聯學位、大頭照上傳、燙金防偽鋼印與高清PNG匯出。",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

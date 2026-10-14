@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>多元宇宙與迷因梗大學高級畢業證書產生器</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- html2canvas for high quality PNG export -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Great+Vibes&family=Noto+Serif+TC:wght@400;600;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    .font-cinzel { font-family: 'Cinzel', serif; }
+    .font-signature { font-family: 'Great Vibes', cursive; }
+    .font-serif-tc { font-family: 'Noto Serif TC', serif; }
+
+    /* Theme Styles with improved text contrast */
+    .theme-ivory {
+      --bg-cert: #fffdf8;
+      --border-color: #b8860b;
+      --text-main: #111827;
+      --text-sub: #374151;
+      --text-accent: #92400e;
+      --cert-shadow: 0 20px 50px -12px rgba(184, 134, 11, 0.25), 0 0 0 1px rgba(184, 134, 11, 0.15);
+    }
+    .theme-royal {
+      --bg-cert: #f8fafc;
+      --border-color: #1e3a8a;
+      --text-main: #0f172a;
+      --text-sub: #334155;
+      --text-accent: #1e40af;
+      --cert-shadow: 0 20px 50px -12px rgba(30, 58, 138, 0.25), 0 0 0 1px rgba(30, 58, 138, 0.15);
+    }
+    .theme-cyber {
+      --bg-cert: #090d16;
+      --border-color: #06b6d4;
+      --text-main: #ffffff;
+      --text-sub: #cbd5e1;
+      --text-accent: #38bdf8;
+      --cert-shadow: 0 0 60px -10px rgba(6, 182, 212, 0.5), 0 0 0 1px rgba(6, 182, 212, 0.4);
+    }
+    .theme-ruby {
+      --bg-cert: #fff8f8;
+      --border-color: #991b1b;
+      --text-main: #18181b;
+      --text-sub: #3f3f46;
+      --text-accent: #b91c1c;
+      --cert-shadow: 0 20px 50px -12px rgba(153, 27, 27, 0.25), 0 0 0 1px rgba(153, 27, 27, 0.15);
+    }
+
+    .cert-text-main { color: var(--text-main); }
+    .cert-text-sub { color: var(--text-sub); }
+    .cert-text-accent { color: var(--text-accent); }
+
+    /* Glassmorphism Sidebar */
+    .glass-panel {
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* Certificate Outer Borders with Paper Depth */
+    .cert-frame {
+      background-color: var(--bg-cert);
+      border: 14px double var(--border-color);
+      outline: 2px solid var(--border-color);
+      outline-offset: -7px;
+      box-shadow: var(--cert-shadow), 0 6px 12px -2px rgba(0, 0, 0, 0.4);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Shimmer Animation for Metallic Seals */
+    @keyframes metallicShimmer {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Floating Mascot Animation */
+    @keyframes mascotFloat {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-6px) rotate(1deg); }
+    }
+    .mascot-floating {
+      animation: mascotFloat 4s ease-in-out infinite;
+    }
+
+    /* Metallic Foil & Seal Styles */
+    .seal-gold {
+      background: linear-gradient(135deg, #fef08a 0%, #d97706 40%, #fef08a 60%, #78350f 100%);
+      background-size: 200% 200%;
+      animation: metallicShimmer 3s ease-in-out infinite;
+      box-shadow: 0 4px 14px rgba(180, 83, 9, 0.45), inset 0 2px 4px rgba(255, 255, 255, 0.8);
+    }
+    .seal-wax {
+      background: radial-gradient(circle, #fca5a5 0%, #dc2626 65%, #7f1d1d 100%);
+      box-shadow: 0 4px 14px rgba(185, 28, 28, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.6);
+    }
+    .seal-holo {
+      background: linear-gradient(135deg, #a5f3fc 0%, #c084fc 25%, #fef08a 50%, #c084fc 75%, #a5f3fc 100%);
+      background-size: 200% 200%;
+      animation: metallicShimmer 4s linear infinite;
+      box-shadow: 0 4px 16px rgba(168, 85, 247, 0.45), inset 0 2px 4px rgba(255, 255, 255, 0.9);
+    }
+    .seal-emerald {
+      background: linear-gradient(135deg, #86efac 0%, #16a34a 40%, #86efac 60%, #064e3b 100%);
+      background-size: 200% 200%;
+      animation: metallicShimmer 3s ease-in-out infinite;
+      box-shadow: 0 4px 14px rgba(22, 163, 74, 0.45), inset 0 2px 4px rgba(255, 255, 255, 0.7);
+    }
+
+    .tab-content:not(.hidden) {
+      animation: tabFadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+    @keyframes tabFadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .tab-btn.active {
+      background-color: #3b82f6;
+      color: #ffffff;
+      font-weight: 700;
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    }
+
+    /* Toast Notification */
+    .toast-container {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 100;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      transform: translateY(120px) scale(0.9);
+      opacity: 0;
+      pointer-events: none;
+    }
+    .toast-container.show {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+
+    aside::-webkit-scrollbar { width: 5px; }
+    aside::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); }
+    aside::-webkit-scrollbar-thumb { background: rgba(51, 65, 85, 0.8); border-radius: 4px; }
+
+    @media print {
+      @page { size: A4 landscape; margin: 0 !important; }
+      html, body {
+        width: 100vw !important; height: 100vh !important;
+        margin: 0 !important; padding: 0 !important;
+        overflow: hidden !important; background: white !important;
+        -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important;
+      }
+      .no-print { display: none !important; }
+      main {
+        padding: 0 !important; margin: 0 !important;
+        width: 100vw !important; height: 100vh !important;
+        display: flex !important; align-items: center !important; justify-content: center !important;
+        background: white !important;
+      }
+      .print-container {
+        box-shadow: none !important; margin: 0 !important;
+        width: 1050px !important; height: 720px !important;
+        max-width: 100vw !important; max-height: 100vh !important;
+        transform: scale(0.95) !important;
+      }
+      .seal-gold, .seal-holo, .seal-emerald, .mascot-floating { animation: none !important; }
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen font-sans flex flex-col lg:flex-row theme-ivory relative overflow-x-hidden">
+  
+  <div class="fixed top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-indigo-900/20 blur-[120px] pointer-events-none"></div>
+  <div class="fixed bottom-[-20%] right-[-10%] w-[50%] h-[50%] rounded-full bg-amber-900/10 blur-[120px] pointer-events-none"></div>
+
+  <!-- Control Panel Sidebar -->
+  <aside class="no-print lg:w-[420px] glass-panel flex flex-col justify-between shrink-0 h-screen sticky top-0 z-30 transition-all">
+    <div class="p-6 space-y-5">
+      
+      <!-- Header Branding -->
+      <div class="flex items-center space-x-4 pb-4 border-b border-white/10">
+        <div class="w-12 h-12 bg-gradient-to-br from-amber-400 to-orange-600 rounded-2xl flex items-center justify-center font-bold text-2xl shadow-[0_0_15px_rgba(245,158,11,0.3)] border border-amber-300/30">
+          🎓
+        </div>
+        <div>
+          <h1 class="text-lg font-extrabold text-white tracking-wide drop-shadow-sm">迷因證書實驗室</h1>
+          <p class="text-xs text-amber-400 font-medium">Multiverse Certificate Studio</p>
+        </div>
+      </div>
+
+      <!-- Quick Action Toolbar -->
+      <div class="grid grid-cols-2 gap-3">
+        <button type="button" onclick="randomizeMemeCert()" class="py-2.5 px-3 bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-500 hover:to-blue-500 text-white font-bold rounded-xl text-xs flex items-center justify-center space-x-1.5 shadow-lg hover:shadow-indigo-500/25 transition-all transform hover:-translate-y-0.5 active:scale-95 border border-indigo-400/20">
+          <span class="text-base">🎲</span> <span>隨機產生</span>
+        </button>
+        <button type="button" onclick="resetDefaults()" class="py-2.5 px-3 bg-slate-800/80 hover:bg-slate-700 text-slate-300 font-semibold rounded-xl text-xs flex items-center justify-center space-x-1.5 border border-slate-600/50 shadow-sm transition-all hover:-translate-y-0.5 active:scale-95">
+          <span class="text-base">🔄</span> <span>還原預設</span>
+        </button>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <div class="grid grid-cols-4 gap-1 bg-black/40 p-1.5 rounded-xl text-[11px] font-semibold border border-white/5 shadow-inner">
+        <button type="button" onclick="switchTab('tab-school')" id="btn-tab-school" class="tab-btn active py-2 rounded-lg transition-all duration-300 text-center truncate">
+          🏛️ 學校
+        </button>
+        <button type="button" onclick="switchTab('tab-student')" id="btn-tab-student" class="tab-btn py-2 rounded-lg transition-all duration-300 text-center truncate">
+          👤 學生
+        </button>
+        <button type="button" onclick="switchTab('tab-degree')" id="btn-tab-degree" class="tab-btn py-2 rounded-lg transition-all duration-300 text-center truncate">
+          🎓 學位
+        </button>
+        <button type="button" onclick="switchTab('tab-style')" id="btn-tab-style" class="tab-btn py-2 rounded-lg transition-all duration-300 text-center truncate">
+          🎨 視覺
+        </button>
+      </div>
+
+      <div id="tab-school" class="tab-content space-y-4 text-xs">
+        <div class="bg-slate-800/40 p-4 rounded-2xl border border-white/5 space-y-4 backdrop-blur-sm">
+          <div>
+            <label class="block font-bold text-amber-400 uppercase tracking-wider mb-2 text-[10px]">
+              🎓 主辦名校 (Primary University)
+            </label>
+            <select id="selectPrimaryUniv" class="w-full bg-slate-900/80 border border-slate-700/80 rounded-xl p-3 text-white font-semibold focus:outline-none focus:border-amber-500 transition-colors shadow-inner">
+              <option value="clapping_cat">👏 拍手黑貓鼓掌大學 (Clapping Cat Univ)</option>
+              <option value="serious_study">🧐 我將嚴肅學習大學 (Serious Study Univ)</option>
+              <option value="capybara">🦫 卡皮巴拉水豚大學 (Capybara Univ)</option>
+              <option value="chiikawa">🧹 吉伊卡哇拔草檢定大學 (Chiikawa Univ)</option>
+              <option value="nai_long">🐉 奶龍大學 (Nai Long Univ)</option>
+              <option value="nai_wah">🐸 奶蛙大學 (Nai Wah Univ)</option>
+              <option value="nai_dan">🥚 奶蛋大學 (Nai Dan Univ)</option>
+              <option value="roblox">🎮 Roblox 羅布樂思大學 (Roblox Univ)</option>
+              <option value="godzilla">🦖 哥吉拉爆射熱線大學 (Godzilla Univ)</option>
+              <option value="mountain_monkey">🛵 山道猴子莫生氣大學 (Mountain Monkey Univ)</option>
+              <option value="boba_tea">🧋 珍珠奶茶連鎖大學 (Boba Tea Univ)</option>
+              <option value="popcat">🐈 迷因貓 Pop Cat 大學 (Pop Cat Univ)</option>
+            </select>
+          </div>
+
+          <!-- Dual Degree Toggle -->
+          <div class="flex items-center justify-between pt-3 border-t border-white/5">
+            <div>
+              <span class="block font-bold text-slate-200">開啟跨宇宙雙聯學位</span>
+              <span class="text-[10px] text-slate-400">兩所名校聯合頒發、雙鋼印</span>
+            </div>
+            <label class="relative inline-flex items-center cursor-pointer">
+              <input type="checkbox" id="toggleDualDegree" class="sr-only peer">
+              <div class="w-11 h-6 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gradient-to-r peer-checked:from-amber-500 peer-checked:to-orange-500 shadow-inner"></div>
+            </label>
+          </div>
+
+          <div id="secondaryUnivBox" class="hidden pt-2 space-y-2">
+            <label class="block font-bold text-sky-400 uppercase tracking-wider text-[10px]">🤝 協辦雙聯學校 (Secondary University)</label>
+            <select id="selectSecondaryUniv" class="w-full bg-slate-900/80 border border-slate-700/80 rounded-xl p-3 text-white font-semibold focus:outline-none focus:border-sky-500 transition-colors shadow-inner">
+              <option value="serious_study">🧐 我將嚴肅學習大學 (Serious Study Univ)</option>
+              <option value="clapping_cat">👏 拍手黑貓鼓掌大學 (Clapping Cat Univ)</option>
+              <option value="capybara">🦫 卡皮巴拉水豚大學 (Capybara Univ)</option>
+              <option value="chiikawa">🧹 吉伊卡哇拔草檢定大學 (Chiikawa Univ)</option>
+              <option value="roblox">🎮 Roblox 羅布樂思大學 (Roblox Univ)</option>
+              <option value="godzilla">🦖 哥吉拉爆射熱線大學 (Godzilla Univ)</option>
+              <option value="nai_long">🐉 奶龍大學 (Nai Long Univ)</option>
+              <option value="boba_tea">🧋 珍珠奶茶連鎖大學 (Boba Tea Univ)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div id="tab-student" class="tab-content hidden space-y-4 text-xs">
+        <div class="bg-slate-800/40 p-4 rounded-2xl border border-white/5 space-y-4 backdrop-blur-sm">
+          <div class="flex justify-between items-center mb-1">
+            <label class="block font-bold text-amber-300 uppercase tracking-wider text-[10px]">畢業生姓名資訊</label>
+            <button type="button" onclick="convertToPinyin()" class="text-[10px] bg-indigo-500/20 hover:bg-indigo-500/40 text-indigo-300 border border-indigo-500/30 font-semibold px-2 py-1 rounded-lg transition-colors flex items-center gap-1">
+              <span>⚡ 自動拼音</span>
+            </button>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <span class="block text-[10px] text-slate-400 mb-1">中文姓名</span>
+              <input type="text" id="inputNameZh" value="王小明" class="w-full bg-slate-900/80 border border-slate-700/80 rounded-xl p-2.5 text-white focus:outline-none focus:border-indigo-500 transition-colors shadow-inner">
+            </div>
+            <div>
+              <span class="block text-[10px] text-slate-400 mb-1">英文姓名 (證書呈現)</span>
+              <input type="text" id="inputNameEn" value="Xiao-Ming Wang" class="w-full bg-slate-900/80 border border-slate-700/80 rounded-xl p-2.5 text-amber-300 font-bold focus:outline-none focus:border-amber-500 transition-colors shadow-inner">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3 pt-3 border-t border-white/5">
+            <div>
+              <label class="block font-bold text-slate-400 mb-1 text-[10px]">頒發日期 (Date)</label>
+              <input type="text" id="inputDate" value="October 14, 2026" class="w-full bg-slate-900/80 border border-slate-700/80 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-500 transition-colors shadow-inner">
+            </div>
+            <div>
+              <label class="block font-bold text-slate-400 mb-1 text-[10px]">證書編號 (Cert ID)</label>
+              <input type="text" id="inputCertId" value="CLAP-2026-8888" class="w-full bg-slate-900/80 border border-slate-700/80 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-500 transition-colors shadow-inner font-mono">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="tab-degree" class="tab-content hidden space-y-4 text-xs">
+        <div class="bg-slate-800/40 p-4 rounded-2xl border border-white/5 space-y-4 backdrop-blur-sm">
+          <div>
+            <label class="block font-bold text-amber-400 uppercase tracking-wider mb-2 text-[10px]">授予學位 (Degree Selection)</label>
+            <select id="selectDegreePreset" onchange="applyDegreePreset()" class="w-full bg-slate-900/80 border border-slate-700/80 rounded-xl p-2.5 text-amber-300 font-semibold mb-2 focus:outline-none focus:border-amber-500 transition-colors">
+            </select>
+            <input type="text" id="inputDegree" value="Doctor of Standing Clapping & Applause Studies" class="w-full bg-slate-900/80 border border-slate-700/80 rounded-xl p-2.5 text-white font-semibold focus:outline-none focus:border-amber-500 transition-colors placeholder:text-slate-600" placeholder="或自訂學位名稱...">
+          </div>
+
+          <div>
+            <label class="block font-bold text-amber-400 uppercase tracking-wider mb-2 text-[10px]">主修專業 (Major Field)</label>
+            <select id="selectMajorPreset" onchange="applyMajorPreset()" class="w-full bg-slate-900/80 border border-slate-700/80 rounded-xl p-2.5 text-amber-300 font-semibold mb-2 focus:outline-none focus:border-amber-500 transition-colors">
+            </select>
+            <input type="text" id="inputMajor" value="起立拍手鼓掌行為學 & 露出微笑讚賞藝術" class="w-full bg-slate-900/80 border border-slate-700/80 rounded-xl p-2.5 text-white font-semibold focus:outline-none focus:border-amber-500 transition-colors placeholder:text-slate-600" placeholder="或自訂主修專業...">
+          </div>
+
+          <div>
+            <label class="block font-bold text-slate-300 uppercase tracking-wider mb-2 text-[10px]">榮譽頭銜 (Honors)</label>
+            <select id="selectHonorBadge" class="w-full bg-slate-900/80 border border-slate-700/80 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-500 transition-colors">
+              <option value="✨ SUMMA CUM LAUDE (最高榮譽畢業)">✨ SUMMA CUM LAUDE (最高榮譽畢業)</option>
+              <option value="👏 APPLAUSE MASTER SUPREME (熱烈鼓掌大師)">👏 APPLAUSE MASTER SUPREME (熱烈鼓掌大師)</option>
+              <option value="🧐 SERIOUS LEARNER RANK 1 (嚴肅學習一級認證)">🧐 SERIOUS LEARNER RANK 1 (嚴肅學習一級認證)</option>
+              <option value="🌿 CHILLMASTER SUPREME (極致鬆弛感首獎)">🌿 CHILLMASTER SUPREME (極致鬆弛感首獎)</option>
+              <option value="🌱 WEED PULLING CERTIFIED RANK 1 (拔草一級檢定合格)">🌱 WEED PULLING CERTIFIED RANK 1 (拔草一級)</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block font-bold text-slate-400 mb-1 text-[10px]">學術評語簡介 (Evaluation Notice)</label>
+            <textarea id="inputDesc" rows="3" class="w-full bg-slate-900/80 border border-slate-700/80 rounded-xl p-3 text-white text-[11px] focus:outline-none focus:border-amber-500 transition-colors leading-relaxed shadow-inner">表彰其在面對任何傑出成就時，皆能展現無比熱情的站立拍手與標誌性微笑，特頒發最高榮譽博士學位。</textarea>
+          </div>
+        </div>
+      </div>
+
+      <div id="tab-style" class="tab-content hidden space-y-4 text-xs">
+        
+        <!-- Photo & Mascot Layout Option -->
+        <div class="bg-slate-800/40 p-4 rounded-2xl border border-white/5 space-y-3 backdrop-blur-sm">
+          <label class="block font-bold text-amber-400 uppercase tracking-wider text-[10px]">🎓 吉祥物角色與照片展示方式</label>
+          
+          <div>
+            <span class="block text-[10px] text-slate-400 mb-1.5">吉祥物立繪位置</span>
+            <select id="selectMascotPosition" onchange="updateCertificateView()" class="w-full bg-slate-900/80 border border-slate-700/80 rounded-xl p-2.5 text-white font-semibold focus:outline-none focus:border-amber-500 transition-colors">
+              <option value="right">👉 站立於證書右側 (完整角色立繪)</option>
+              <option value="left">👈 站立於證書左側 (完整角色立繪)</option>
+              <option value="none">🚫 隱藏側邊吉祥物立繪</option>
+            </select>
+          </div>
+
+          <div class="pt-2 border-t border-white/5">
+            <span class="block text-[10px] text-slate-400 mb-1.5">畢業生照片 / 大頭照</span>
+            <div class="grid grid-cols-2 gap-2">
+              <label class="cursor-pointer bg-amber-600/20 hover:bg-amber-600/40 text-amber-300 border border-amber-500/30 py-2.5 rounded-xl font-bold transition-colors flex items-center justify-center gap-1 shadow-sm">
+                <span class="text-sm">📤</span> <span>上傳個人照</span>
+                <input type="file" id="uploadPhotoInput" accept="image/*" class="hidden" onchange="handlePhotoUpload(event)">
+              </label>
+              <button type="button" onclick="usePresetPhoto()" class="bg-slate-900/80 hover:bg-slate-700 text-slate-300 py-2.5 rounded-xl border border-slate-600/50 transition-colors font-medium flex items-center justify-center gap-1 shadow-sm">
+                <span>🔄 清除大頭照</span>
+              </button>
+            </div>
+            <p id="photoStatusText" class="text-[10px] text-slate-400 text-center italic mt-1.5">大頭照：目前為學士服圖騰</p>
+          </div>
+        </div>
+
+        <!-- Certificate Theme -->
+        <div class="bg-slate-800/40 p-4 rounded-2xl border border-white/5 space-y-3 backdrop-blur-sm">
+          <label class="block font-bold text-amber-400 uppercase tracking-wider text-[10px]">證書主題色調</label>
+          <div class="grid grid-cols-2 gap-2">
+            <button type="button" onclick="setCertTheme('theme-ivory')" class="p-2.5 bg-gradient-to-br from-amber-50 to-amber-100 hover:brightness-105 text-slate-900 rounded-xl font-bold text-center border border-amber-300 shadow-sm transition-transform active:scale-95">
+              ✨ 典雅羊皮金
+            </button>
+            <button type="button" onclick="setCertTheme('theme-royal')" class="p-2.5 bg-gradient-to-br from-slate-100 to-slate-200 hover:brightness-105 text-blue-900 rounded-xl font-bold text-center border border-blue-300 shadow-sm transition-transform active:scale-95">
+              👑 皇家鉑金
+            </button>
+            <button type="button" onclick="setCertTheme('theme-ruby')" class="p-2.5 bg-gradient-to-br from-rose-50 to-rose-100 hover:brightness-105 text-rose-900 rounded-xl font-bold text-center border border-rose-300 shadow-sm transition-transform active:scale-95">
+              🍷 帝國紅寶石
+            </button>
+            <button type="button" onclick="setCertTheme('theme-cyber')" class="p-2.5 bg-gradient-to-br from-slate-800 to-slate-900 hover:brightness-105 text-cyan-400 rounded-xl font-bold text-center border border-cyan-700 shadow-sm transition-transform active:scale-95">
+              ⚡ 賽博霓虹
+            </button>
+          </div>
+        </div>
+
+        <!-- Seal Style -->
+        <div class="bg-slate-800/40 p-4 rounded-2xl border border-white/5 space-y-2 backdrop-blur-sm">
+          <label class="block font-bold text-amber-400 uppercase tracking-wider text-[10px]">防偽鋼印材質 (CSS Shimmer)</label>
+          <select id="selectSealStyle" class="w-full bg-slate-900/80 border border-slate-700/80 rounded-xl p-3 text-white font-semibold focus:outline-none focus:border-amber-500 transition-colors shadow-inner">
+            <option value="seal-gold">🟡 立體光澤燙金 (Golden Metallic)</option>
+            <option value="seal-wax">🔴 古典皇家封蠟 (Crimson Wax)</option>
+            <option value="seal-emerald">🟢 翡翠帝國印章 (Emerald Royal)</option>
+            <option value="seal-holo">🟣 全息雷射光澤 (Holographic Foil)</option>
+          </select>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Export Action Bar -->
+    <div class="p-5 bg-black/50 border-t border-white/10 space-y-3 backdrop-blur-md">
+      <div class="grid grid-cols-2 gap-3">
+        <button id="btnExport" type="button" onclick="exportToPNG()" class="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 font-extrabold py-3.5 px-2 rounded-xl shadow-[0_0_20px_rgba(245,158,11,0.3)] flex items-center justify-center space-x-1.5 transition-all transform hover:-translate-y-0.5 active:scale-95 text-xs">
+          <span class="text-base">📸</span> <span>匯出高清 PNG</span>
+        </button>
+        <button type="button" onclick="window.print()" class="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-extrabold py-3.5 px-2 rounded-xl shadow-[0_0_20px_rgba(16,185,129,0.2)] flex items-center justify-center space-x-1.5 transition-all transform hover:-translate-y-0.5 active:scale-95 text-xs">
+          <span class="text-base">🖨️</span> <span>列印 / 存 PDF</span>
+        </button>
+      </div>
+      <div class="text-center pt-1">
+        <p class="text-[10px] text-slate-400 mb-0.5">匯出檔名預覽：</p>
+        <p id="pdfFilenameNotice" class="text-[11px] text-amber-400 font-mono font-bold truncate">
+          王小明拍手黑貓鼓掌大學畢業證書.png
+        </p>
+      </div>
+    </div>
+  </aside>
+
+  <main class="flex-1 p-4 lg:p-8 flex flex-col items-center justify-center bg-transparent overflow-auto min-h-screen relative z-10">
+    
+    <!-- Certificate Live Box -->
+    <div id="certContainer" class="print-container relative w-[980px] h-[680px] p-8 cert-frame flex flex-col justify-between shrink-0 select-none overflow-hidden">
+      
+      <!-- Security Pattern Background (Guilloche) -->
+      <div class="absolute inset-0 pointer-events-none opacity-[0.25] mix-blend-multiply">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="guillochePattern" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M 0 20 Q 10 0 20 20 T 40 20" fill="none" stroke="currentColor" stroke-width="0.5" class="text-amber-800" opacity="0.3" />
+              <path d="M 20 0 Q 40 10 20 20 T 20 40" fill="none" stroke="currentColor" stroke-width="0.5" class="text-amber-800" opacity="0.3" />
+              <circle cx="20" cy="20" r="8" fill="none" stroke="currentColor" stroke-width="0.3" class="text-amber-800" opacity="0.2" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#guillochePattern)" />
+        </svg>
+      </div>
+
+      <!-- Paper Noise Texture -->
+      <div class="absolute inset-0 opacity-[0.35] mix-blend-overlay pointer-events-none" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E');"></div>
+
+      <!-- Corner Ornaments -->
+      <div class="absolute top-4 left-4 w-14 h-14 border-t-4 border-l-4 border-amber-600/70 opacity-90"></div>
+      <div class="absolute top-4 right-4 w-14 h-14 border-t-4 border-r-4 border-amber-600/70 opacity-90"></div>
+      <div class="absolute bottom-4 left-4 w-14 h-14 border-b-4 border-l-4 border-amber-600/70 opacity-90"></div>
+      <div class="absolute bottom-4 right-4 w-14 h-14 border-b-4 border-r-4 border-amber-600/70 opacity-90"></div>
+
+      <!-- Watermark Mascot Background -->
+      <div class="absolute inset-0 flex items-center justify-center opacity-[0.05] pointer-events-none select-none">
+        <div id="watermarkIcon" class="w-[380px] h-[380px] flex items-center justify-center filter grayscale contrast-150">
+        </div>
+      </div>
+
+      <!-- ⭐ Full Standing University Mascot Character (Side Illustration) ⭐ -->
+      <div id="sideMascotContainer" class="absolute right-8 bottom-16 w-48 h-64 z-20 flex flex-col items-center justify-end pointer-events-none transition-all duration-300">
+        <div id="mascotSvgWrapper" class="w-full h-52 mascot-floating filter drop-shadow-[0_12px_20px_rgba(0,0,0,0.35)]">
+          <!-- Full Vector Mascot Injected via JS -->
+        </div>
+        <!-- Shadow Base underneath mascot -->
+        <div class="w-32 h-3 bg-black/20 rounded-full blur-[3px] mt-1"></div>
+        <span id="mascotNameTag" class="mt-1 text-[10px] bg-amber-900/80 text-amber-100 font-bold px-3 py-0.5 rounded-full border border-amber-400/50 shadow-md">
+          吉祥物代表
+        </span>
+      </div>
+
+      <!-- Header Section -->
+      <div class="text-center relative z-10 pt-1">
+        
+        <!-- Top Honor Badge Banner -->
+        <div class="inline-block mb-2">
+          <span id="displayHonorBadge" class="bg-amber-500/15 border border-amber-600/40 cert-text-accent font-cinzel text-xs font-black px-5 py-1.5 rounded-full uppercase tracking-widest shadow-sm backdrop-blur-sm">
+            ✨ SUMMA CUM LAUDE (最高榮譽畢業)
+          </span>
+        </div>
+
+        <div class="flex items-center justify-center space-x-4 mb-1.5">
+          <!-- Primary Avatar / Logo -->
+          <div id="primaryLogoBadge" class="w-16 h-16 flex items-center justify-center shadow-lg rounded-2xl p-1 bg-white/90 border border-amber-300 overflow-hidden shrink-0">
+          </div>
+
+          <!-- Dual Connector -->
+          <div id="dualConnectorSymbol" class="hidden text-amber-600 font-black text-2xl px-2">✕</div>
+
+          <!-- Secondary Avatar -->
+          <div id="secondaryLogoBadge" class="hidden w-16 h-16 items-center justify-center shadow-lg rounded-2xl p-1 bg-white/90 border border-red-300 overflow-hidden shrink-0">
+          </div>
+
+          <span id="displayUnivTitle" class="font-cinzel text-3xl lg:text-4xl font-black tracking-widest cert-text-main ml-2 drop-shadow-sm">
+            CLAPPING BLACK CAT UNIV
+          </span>
+        </div>
+
+        <p id="displayUnivSubTitle" class="font-serif-tc text-sm uppercase tracking-[0.25em] font-bold cert-text-accent mt-1.5">
+          拍 手 黑 貓 鼓 掌 大 學 熱 烈 讚 賞 頂 級 認 證
+        </p>
+        <div id="headerDivider" class="w-56 h-0.5 bg-gradient-to-r from-transparent via-amber-600 to-transparent mx-auto mt-2.5 opacity-80"></div>
+      </div>
+
+      <!-- Certificate Core Content -->
+      <div class="text-center relative z-10 my-auto py-1 flex flex-col items-center justify-center">
+        
+        <!-- Graduation Photo Box -->
+        <div class="relative mb-2 group">
+          <div id="certPhotoFrame" class="relative w-[88px] h-[108px] bg-slate-900 border-2 border-amber-400/80 rounded-xl shadow-md overflow-hidden flex items-center justify-center p-1 z-10">
+            <div id="certPhotoContainer" class="w-full h-full flex items-center justify-center overflow-hidden bg-gradient-to-b from-amber-50 to-amber-100 rounded-lg">
+              <!-- Rendered Student Photo or Graduation Mortarboard Badge -->
+            </div>
+          </div>
+          <span class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-amber-800 text-amber-100 text-[9px] px-2 py-0.5 rounded-full shadow font-serif-tc font-bold whitespace-nowrap z-20 border border-amber-600">
+            畢業大頭照
+          </span>
+        </div>
+
+        <p class="font-serif-tc text-xs italic cert-text-sub mb-1 font-medium">茲證明 (This is to certify that)</p>
+        
+        <!-- Student Name (English & Large) -->
+        <div class="inline-block border-b-2 border-amber-600/50 px-10 pb-0.5 mb-1.5">
+          <span id="displayNameEn" class="font-cinzel text-3xl lg:text-4xl font-black tracking-wider cert-text-main drop-shadow-sm">Xiao-Ming Wang</span>
+        </div>
+        
+        <p class="font-serif-tc text-xs cert-text-sub mb-1.5 font-semibold">
+          修滿規定學分，經學位評定委員會考核成績合格，特此授予
+        </p>
+
+        <!-- Degree Title -->
+        <h3 id="displayDegree" class="font-cinzel text-2xl lg:text-3xl font-black tracking-wider mb-2 transition-colors cert-text-accent drop-shadow-sm">
+          Doctor of Standing Clapping & Applause Studies
+        </h3>
+
+        <!-- Major -->
+        <p id="displayMajor" class="font-serif-tc text-xs font-bold cert-text-main mb-2 bg-amber-500/15 inline-block px-5 py-1 rounded-full border border-amber-500/30 shadow-sm">
+          主修：起立拍手鼓掌行為學 & 露出微笑讚賞藝術
+        </p>
+
+        <!-- Description -->
+        <p id="displayDesc" class="font-serif-tc text-xs lg:text-sm cert-text-sub max-w-xl mx-auto leading-relaxed italic px-4 font-medium">
+          表彰其在面對任何傑出成就時，皆能展現無比熱情的站立拍手與標誌性微笑，特頒發最高榮譽博士學位。
+        </p>
+      </div>
+
+      <!-- Footer Section: Seals & Signatures -->
+      <div class="relative z-10 grid grid-cols-3 items-end pt-3 pb-1 border-t border-slate-400/50">
+        
+        <!-- Left Signature -->
+        <div class="text-center">
+          <p id="sigLeftName" class="font-signature text-3xl lg:text-4xl cert-text-main -mb-1 transform -rotate-2">Clapping Kitty</p>
+          <div class="w-36 h-[1.5px] bg-slate-400 mx-auto mb-1"></div>
+          <p id="sigLeftTitle" class="font-cinzel text-[11px] font-bold uppercase tracking-wider cert-text-main">拍手黑貓校長 (Clapping Cat)</p>
+          <p id="sigLeftSub" class="text-[9px] cert-text-sub font-medium">首席熱烈鼓掌官</p>
+        </div>
+
+        <!-- Center Seals -->
+        <div class="flex items-center justify-center gap-3">
+          <!-- Seal 1 -->
+          <div id="sealPrimary" class="relative w-16 h-16 seal-holo rounded-full border border-amber-200/60 flex items-center justify-center p-1.5 shadow-md shrink-0">
+            <div class="w-full h-full border border-dashed border-black/40 rounded-full flex flex-col items-center justify-center text-center p-0.5">
+              <span id="seal1Icon" class="text-base">👏</span>
+              <span id="seal1Text" class="font-cinzel text-[5px] font-black tracking-widest text-black/90 uppercase">APPLAUSE</span>
+            </div>
+          </div>
+
+          <!-- Seal 2 (Dual Degree) -->
+          <div id="sealSecondary" class="hidden relative w-16 h-16 seal-wax rounded-full border border-red-200/60 flex items-center justify-center p-1.5 shadow-md shrink-0">
+            <div class="w-full h-full border border-dashed border-white/50 rounded-full flex flex-col items-center justify-center text-center p-0.5">
+              <span id="seal2Icon" class="text-base">🧹</span>
+              <span id="seal2Text" class="font-cinzel text-[5px] font-black tracking-widest text-white/90 uppercase">OFFICIAL SEAL</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Signature & Date -->
+        <div class="text-center">
+          <p id="sigRightName" class="font-signature text-3xl lg:text-4xl cert-text-main -mb-1 transform rotate-1">Applause Master</p>
+          <div class="w-36 h-[1.5px] bg-slate-400 mx-auto mb-1"></div>
+          <p id="sigRightTitle" class="font-cinzel text-[11px] font-bold uppercase tracking-wider cert-text-main">鼓掌特聘教授 (Applause Cat)</p>
+          <p id="displayDate" class="text-[9px] cert-text-sub font-semibold mt-0.5">頒發日期：October 14, 2026</p>
+          <p id="displayCertId" class="font-mono text-[8px] opacity-75 cert-text-sub">CLAP-2026-8888</p>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Global Toast Notification -->
+  <div id="toast" class="toast-container flex items-center gap-3 bg-slate-800/95 backdrop-blur-md text-white px-5 py-3.5 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.5)] border border-slate-700 pointer-events-none">
+    <span id="toastIcon" class="text-xl">✅</span>
+    <span id="toastMsg" class="font-bold text-sm tracking-wide">操作成功</span>
+  </div>
+
+  <script>
+    const UNIV_CONFIGS = {
+      clapping_cat: { nameZh: "拍手黑貓鼓掌大學", nameEn: "CLAPPING BLACK CAT UNIV", subZh: "拍 手 黑 貓 鼓 掌 大 學 熱 烈 讚 賞 頂 級 認 證", svgKey: "clapping_cat", primaryColor: "#334155", accentColor: "#0f172a", sigLeftName: "Clapping Kitty", sigLeftTitle: "拍手黑貓校長 (Clapping Cat)", sigLeftSub: "首席熱烈鼓掌官", sigRightName: "Applause Master", sigRightTitle: "鼓掌特聘教授 (Applause Cat)", sealBgClass: "seal-holo", sealIcon: "👏", sealTitle: "APPLAUSE", sealSub: "CAT UNIV", degrees: ["Doctor of Standing Clapping & Applause Studies", "Master of Enthusiastic Standing Ovation", "Bachelor of Smiling & Cheering Arts"], majors: ["起立拍手鼓掌行為學 & 露出微笑讚賞藝術", "無止境熱烈鼓掌共振學", "全場起立致敬與氣氛帶動工程"], defaultDesc: "表彰其在面對任何傑出成就時，皆能展現無比熱情的站立拍手與標誌性微笑，特頒發最高榮譽博士學位。" },
+      serious_study: { nameZh: "我將嚴肅學習大學", nameEn: "SERIOUS STUDY MEME UNIV", subZh: "嚴 肅 認 真 絕 不 擺 爛 專 注 學習 頂 級 認 證", svgKey: "serious_study", primaryColor: "#1e293b", accentColor: "#0284c7", sigLeftName: "Serious Guy", sigLeftTitle: "嚴肅學習發起人 (Serious Guy)", sigLeftSub: "學術誠信與沉思總監", sigRightName: "Study Harder", sigRightTitle: "教務長：認真人 (Study Hard)", sealBgClass: "seal-wax", sealIcon: "🧐", sealTitle: "SERIOUS", sealSub: "STUDY UNIV", degrees: ["Doctor of Serious Study & Anti-Procrastination", "Master of Extreme Focus & Brow Furrowing", "Bachelor of Steepled Hands Contemplation"], majors: ["沉思手勢力學 & 拒絕擺爛極速專注工程學", "嚴肅眉毛控制學 & 夜戰圖書館理論", "學霸沉思姿態與無干擾專注力"], defaultDesc: "表彰其下定決心「我將嚴肅學習」，展現無可挑剔的嚴肅眉毛與極致專注力，特頒發最高榮譽學術認證。" },
+      capybara: { nameZh: "卡皮巴拉水豚大學", nameEn: "CAPYBARA UNIVERSITY", subZh: "水 豚 大 學 鬆 弛 感 頂 級 榮 譽 認 證", svgKey: "capybara", primaryColor: "#b8860b", accentColor: "#854d0e", sigLeftName: "Capybara Lord", sigLeftTitle: "水豚校長 (Capybara Lord)", sigLeftSub: "水豚宇宙極致鬆弛官", sigRightName: "Usagi Yaha", sigRightTitle: "教務長：烏薩奇 (Usagi)", sealBgClass: "seal-gold", sealIcon: "🦫", sealTitle: "CHILL SEAL", sealSub: "CAPY UNIV", degrees: ["Doctor of Capybara Chillness & Serenity", "Master of Onsen Bathing Relaxation", "Bachelor of Zero-Stress Mindset"], majors: ["水豚頂水果平衡力學 & 極致情緒穩定哲學", "露天溫泉泡澡長度極限突破學", "佛系面對世界危機精神健康學"], defaultDesc: "表彰其在面對任何危機時皆能保持極致鬆弛感與情緒穩定，頭頂橘子泡溫泉長達十天十夜，特頒發最高榮譽博士學位。" },
+      chiikawa: { nameZh: "吉伊卡哇拔草大學", nameEn: "CHIIKAWA WEED PULLING UNIV", subZh: "吉 伊 卡 哇 拔 草 檢 定 頂 級 榮 譽 認 證", svgKey: "chiikawa", primaryColor: "#0284c7", accentColor: "#0369a1", sigLeftName: "Chiikawa", sigLeftTitle: "吉伊卡哇校長 (Chiikawa)", sigLeftSub: "拔草檢定特等認證官", sigRightName: "Hachiware", sigRightTitle: "小八貓教務長 (Hachiware)", sealBgClass: "seal-emerald", sealIcon: "🌱", sealTitle: "WEED SEAL", sealSub: "CHIIKAWA UNIV", degrees: ["Master of Chiikawa Weed Pulling Rank 1", "Doctor of Brave Monster Subjugation", "Bachelor of Yaha Screaming & Dancing"], majors: ["一級拔草檢定實務 & 討伐大作戰", "怪獸討伐鐮刀應用工程學", "哭哭克服與夥伴羈絆共鳴學"], defaultDesc: "通過嚴苛的拔草檢定考驗，展現出無與倫比的拔草技巧與勇敢精神，特此頒發一級檢定通過證書。" },
+      godzilla: { nameZh: "哥吉拉熱線大學", nameEn: "GODZILLA ATOMIC UNIV", subZh: "哥 吉 拉 爆 射 熱 線 怪 獸 破 壞 認 證", svgKey: "godzilla", primaryColor: "#dc2626", accentColor: "#991b1b", sigLeftName: "King Godzilla", sigLeftTitle: "怪獸之王哥吉拉 (Godzilla)", sigLeftSub: "原子吐息最高司令官", sigRightName: "Mothra Queen", sigRightTitle: "摩斯拉 (Mothra)", sealBgClass: "seal-wax", sealIcon: "🔥", sealTitle: "ATOMIC", sealSub: "GODZILLA UNIV", degrees: ["Doctor of Godzilla Atomic Thermal Ray", "Master of Dorsal Fin Plasma Charging", "Bachelor of Kaiju Roar & Footstep Impact"], majors: ["原子熱線高能輻射物理 & 城市地貌重塑學", "背鰭電磁脈衝爆發工程", "怪獸之王咆哮聲波衝擊學"], defaultDesc: "掌握背鰭閃爍藍光與口吐原子吐息之核心技術，能一擊貫穿萬物，特頒發怪獸之王榮譽博士學位。" },
+      mountain_monkey: { nameZh: "山道猴子莫生氣大學", nameEn: "MOUNTAIN MONKEY RACING UNIV", subZh: "山 道 猴 子 莫 生 氣 車 神 榮 譽 認 證", svgKey: "mountain_monkey", primaryColor: "#ea580c", accentColor: "#c2410c", sigLeftName: "Mountain King", sigLeftTitle: "台七乙車神 (Mountain King)", sigLeftSub: "過彎莫生氣總教練", sigRightName: "Zen Master", sigRightTitle: "莫生氣大師 (Zen Master)", sealBgClass: "seal-wax", sealIcon: "🛵", sealTitle: "RACING", sealSub: "MONKEY UNIV", degrees: ["Master of Mountain Racing & Zen Mindset", "Doctor of Knee-Sliding Lean Angle", "Bachelor of Tai 7 Yi Anti-Rage Therapy"], majors: ["壓車過彎傾角力學 & 山道莫生氣情緒管理", "檔車極限改裝與貼貼哲學", "跑山追焦照片霸氣構圖學"], defaultDesc: "在台七乙山道上展現極致壓車技巧與平靜如水的莫生氣心態，特頒發山道車神學位。" },
+      nai_long: { nameZh: "奶龍大學", nameEn: "NAI LONG UNIVERSITY", subZh: "奶 龍 大 學 頂 級 萌 獸 榮 譽 學 位 認 證", svgKey: "nai_long", primaryColor: "#d97706", accentColor: "#b45309", sigLeftName: "Nai Long", sigLeftTitle: "奶龍校長 (Nai Long)", sigLeftSub: "奶龍宇宙最高快樂官", sigRightName: "Xiao Jian", sigRightTitle: "小簡 (Xiao Jian)", sealBgClass: "seal-gold", sealIcon: "🐉", sealTitle: "DRAGON", sealSub: "NAI LONG UNIV", degrees: ["Master of Dragon Logic & Tycoon Economics", "Doctor of Yellow Belly Bounce Energy", "Bachelor of Cute Roar & Snack Science"], majors: ["萌獸快樂能量轉換 & 奶龍邏輯行為學", "黃色肚子彈力物理與食物吸收學", "奶龍賣萌治癒心理學"], defaultDesc: "成功掌握奶龍快樂傳播學，能以可愛萌威感染整個宇宙，特頒發奶龍大學最高榮譽學位。" },
+      nai_wah: { nameZh: "奶蛙大學", nameEn: "NAI WAH UNIVERSITY", subZh: "奶 蛙 大 學 咕 嚕 萌 動 榮 譽 學 位 認 證", svgKey: "nai_wah", primaryColor: "#eab308", accentColor: "#854d0e", sigLeftName: "Nai Wah", sigLeftTitle: "奶蛙校長 (Nai Wah)", sigLeftSub: "奶蛙肚肚首席官", sigRightName: "Xiao Jian", sigRightTitle: "小簡 (Xiao Jian)", sealBgClass: "seal-gold", sealIcon: "🐸", sealTitle: "FROG SEAL", sealSub: "NAI WAH UNIV", degrees: ["Master of Frog Belly Elasticity & Charm", "Doctor of Inflatable Frog Acrobatics", "Bachelor of Gulu Gulu Sound Waves"], majors: ["拍肚肚聲波共振學 & 青蛙充氣動力學", "黃色大肚肚撫摸與表情包力學", "咕嚕咕嚕可愛聲效傳達"], defaultDesc: "精通黃色梨形肚肚撫摸與拍肚肚產生的治癒聲波，特此頒發奶蛙大學最高榮譽認證。" },
+      nai_dan: { nameZh: "奶蛋大學", nameEn: "NAI DAN UNIVERSITY", subZh: "奶 蛋 大 學 圓 潤 流 心 榮 譽 學 位 認 證", svgKey: "nai_dan", primaryColor: "#eab308", accentColor: "#ca8a04", sigLeftName: "Nai Dan", sigLeftTitle: "奶蛋校長 (Nai Dan)", sigLeftSub: "奶蛋流心總監", sigRightName: "Xiao Jian", sigRightTitle: "小簡 (Xiao Jian)", sealBgClass: "seal-gold", sealIcon: "🥚", sealTitle: "EGG SEAL", sealSub: "NAI DAN UNIV", degrees: ["Doctor of Yolk Thermodynamics & Softness", "Master of Round Smooth Body Physics", "Bachelor of Golden Custard Flow"], majors: ["流心奶黃熱力學 & 圓潤完美外殼流體力學", "蛋黃溫控與極致滑嫩質感研究", "甜點能量與幸福感傳遞"], defaultDesc: "完美掌握蛋黃溫控與極致流心質感，特頒發奶蛋大學最高榮譽博士學位。" },
+      roblox: { nameZh: "Roblox 羅布樂思大學", nameEn: "ROBLOX MEME UNIVERSITY", subZh: "羅 布 樂 思 創 建 者 與 迷 因 實 務 認 證", svgKey: "roblox", primaryColor: "#dc2626", accentColor: "#991b1b", sigLeftName: "David Baszucki", sigLeftTitle: "Roblox 執行長 (Builderman)", sigLeftSub: "元宇宙首席架構師", sigRightName: "Noob King", sigRightTitle: "教務長：新手王 (Noob King)", sealBgClass: "seal-wax", sealIcon: "🎮", sealTitle: "ROBLOX", sealSub: "BUILDER", degrees: ["Doctor of Roblox Luau Game Scripting", "Master of Obby Parkour & Speedrun", "Bachelor of Avatar Fashion Design"], majors: ["Roblox Luau 程式設計 & 元宇宙地圖建築學", "障礙跑酷 (Obby) 關卡心理學", "OOF 經典音效與造型穿搭藝術"], defaultDesc: "精通 Roblox Luau 腳本開發與障礙跑酷關卡設計，特頒發羅布樂思大學最高榮譽認證。" },
+      boba_tea: { nameZh: "珍珠奶茶連鎖大學", nameEn: "BOBA TEA CHAIN UNIV", subZh: "珍 珠 奶 茶 冰 塊 甜 度 精 密 控制 認 證", svgKey: "boba_tea", primaryColor: "#d97706", accentColor: "#92400e", sigLeftName: "Boba Master", sigLeftTitle: "珍奶創始人 (Boba Master)", sigLeftSub: "手搖飲品總監", sigRightName: "Sugar Overlord", sigRightTitle: "全糖大師 (Sugar King)", sealBgClass: "seal-gold", sealIcon: "🧋", sealTitle: "BOBA SEAL", sealSub: "TEA UNIV", degrees: ["Doctor of Tapioca Pearl Chewiness & Sugar Control", "Master of Straw Piercing Technique", "Bachelor of Golden Ratio Milk Tea"], majors: ["黑糖珍珠Q度嚼勁力學 & 微糖微冰黃金比例", "封口膜一針見血戳洞氣流學", "奶茶與珍珠密度沉降平衝學"], defaultDesc: "完美調配微糖微冰黃金比例，並精通一針見血戳穿封口膜之絕技，特頒發手搖飲最高學位。" },
+      popcat: { nameZh: "迷因貓 Pop Cat 大學", nameEn: "POPCAT CLICKING UNIV", subZh: "迷 因 貓 POPCAT 嘴 吧 開 合 點 擊 認 證", svgKey: "popcat", primaryColor: "#1e293b", accentColor: "#0284c7", sigLeftName: "Pop Cat", sigLeftTitle: "Pop Cat 校長 (Pop Cat)", sigLeftSub: "點擊計數器總監", sigRightName: "Clicker God", sigRightTitle: "教務長：連點神手 (Click God)", sealBgClass: "seal-holo", sealIcon: "🐈", sealTitle: "POPCAT", sealSub: "CLICK UNIV", degrees: ["Doctor of PopCat Mouth Opening Speed & Clicks", "Master of Global Clicker Leaderboard", "Bachelor of Pop Sound Frequency"], majors: ["PopCat 嘴巴開合頻率學 & 億萬點擊速度學", "POP 啵啵聲波響度物理", "連點神器與手指肌肉耐力工程"], defaultDesc: "創造每秒百次嘴巴開合 POP 音效與貢獻全球點擊排行榜，特頒發 Pop Cat 大學最高榮譽認證。" }
+    };
+
+    const CHARACTER_VISUALS = {
+      clapping_cat: `<svg viewBox="0 0 200 220" class="w-full h-full object-contain"><defs><radialGradient id="catFur" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="#3f3f46" /><stop offset="70%" stop-color="#18181b" /><stop offset="100%" stop-color="#09090b" /></radialGradient><radialGradient id="catEye" cx="35%" cy="35%" r="65%"><stop offset="0%" stop-color="#fef08a" /><stop offset="50%" stop-color="#eab308" /><stop offset="100%" stop-color="#ca8a04" /></radialGradient></defs><path d="M 50 110 C 45 190, 155 190, 150 110 C 150 55, 50 55, 50 110 Z" fill="url(#catFur)" /><path d="M 55 80 L 32 20 C 50 25, 75 42, 80 60 Z" fill="url(#catFur)" /><path d="M 145 80 L 168 20 C 150 25, 125 42, 120 60 Z" fill="url(#catFur)" /><path d="M 58 75 L 42 35 L 70 60 Z" fill="#f43f5e" opacity="0.6" /><path d="M 142 75 L 158 35 L 130 60 Z" fill="#f43f5e" opacity="0.6" /><ellipse cx="75" cy="85" rx="14" ry="16" fill="url(#catEye)" /><ellipse cx="125" cy="85" rx="14" ry="16" fill="url(#catEye)" /><ellipse cx="75" cy="85" rx="4" ry="12" fill="#000000" /><ellipse cx="125" cy="85" rx="4" ry="12" fill="#000000" /><path d="M 76 108 Q 100 130 124 108 Z" fill="#ffffff" stroke="#09090b" stroke-width="2.5" /><ellipse cx="100" cy="118" rx="8" ry="5" fill="#f43f5e" /><path d="M 30 120 C 55 110, 80 135, 82 145 C 65 155, 35 150, 20 130 Z" fill="#3f3f46" stroke="#09090b" stroke-width="2" /><path d="M 170 120 C 145 110, 120 135, 118 145 C 135 155, 165 150, 180 130 Z" fill="#3f3f46" stroke="#09090b" stroke-width="2" /><circle cx="82" cy="142" r="5" fill="#fef08a" /><circle cx="118" cy="142" r="5" fill="#fef08a" /></svg>`,
+      
+      serious_study: `<svg viewBox="0 0 200 220" class="w-full h-full object-contain"><defs><linearGradient id="suitGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1e293b" /><stop offset="100%" stop-color="#0f172a" /></linearGradient></defs><ellipse cx="100" cy="85" rx="60" ry="52" fill="#fffdf8" stroke="#0f172a" stroke-width="5" /><path d="M 40 170 C 40 130, 160 130, 160 170 L 170 220 L 30 220 Z" fill="url(#suitGrad)" stroke="#0f172a" stroke-width="4" /><polygon points="100,135 80,175 120,175" fill="#ffffff" /><polygon points="100,145 92,210 100,220 108,210" fill="#dc2626" /><path d="M 52 62 L 92 78" stroke="#0f172a" stroke-width="7" stroke-linecap="round" /><path d="M 148 62 L 108 78" stroke="#0f172a" stroke-width="7" stroke-linecap="round" /><ellipse cx="76" cy="88" rx="12" ry="9" fill="#ffffff" stroke="#0f172a" stroke-width="3.5" /><ellipse cx="124" cy="88" rx="12" ry="9" fill="#ffffff" stroke="#0f172a" stroke-width="3.5" /><circle cx="76" cy="88" r="5" fill="#0f172a" /><circle cx="124" cy="88" r="5" fill="#0f172a" /><line x1="85" y1="112" x2="115" y2="112" stroke="#0f172a" stroke-width="4.5" stroke-linecap="round" /></svg>`,
+      
+      capybara: `<svg viewBox="0 0 200 220" class="w-full h-full object-contain"><defs><linearGradient id="capyFur" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#d97706" /><stop offset="60%" stop-color="#b45309" /><stop offset="100%" stop-color="#78350f" /></linearGradient></defs><path d="M 50 140 C 50 80, 150 80, 150 140 C 150 190, 50 190, 50 140 Z" fill="url(#capyFur)" /><path d="M 60 115 C 60 65, 140 65, 140 115 Z" fill="url(#capyFur)" /><ellipse cx="100" cy="128" rx="22" ry="14" fill="#451a03" /><ellipse cx="92" cy="126" rx="4" ry="6" fill="#1c1917" /><ellipse cx="108" cy="126" rx="4" ry="6" fill="#1c1917" /><path d="M 72 100 Q 82 92 90 100" stroke="#1c1917" stroke-width="4" stroke-linecap="round" fill="none" /><path d="M 110 100 Q 118 92 128 100" stroke="#1c1917" stroke-width="4" stroke-linecap="round" fill="none" /><circle cx="100" cy="48" r="18" fill="#ea580c" /><path d="M 100 30 Q 105 22 108 26" stroke="#16a34a" stroke-width="3" fill="none" /></svg>`,
+      
+      chiikawa: `<svg viewBox="0 0 200 220" class="w-full h-full object-contain"><ellipse cx="100" cy="125" rx="66" ry="58" fill="#ffffff" stroke="#0284c7" stroke-width="5" /><ellipse cx="68" cy="74" rx="14" ry="18" fill="#ffffff" stroke="#0284c7" stroke-width="4" /><ellipse cx="132" cy="74" rx="14" ry="18" fill="#ffffff" stroke="#0284c7" stroke-width="4" /><ellipse cx="68" cy="74" rx="8" ry="11" fill="#f472b6" opacity="0.4" /><ellipse cx="132" cy="74" rx="8" ry="11" fill="#f472b6" opacity="0.4" /><circle cx="75" cy="118" r="8" fill="#0f172a" /><circle cx="125" cy="118" r="8" fill="#0f172a" /><circle cx="73" cy="115" r="3" fill="#ffffff" /><circle cx="123" cy="115" r="3" fill="#ffffff" /><path d="M 92 128 Q 100 136 108 128" stroke="#0284c7" stroke-width="4" fill="none" stroke-linecap="round" /><ellipse cx="60" cy="132" rx="9" ry="6" fill="#f472b6" opacity="0.6" /><ellipse cx="140" cy="132" rx="9" ry="6" fill="#f472b6" opacity="0.6" /></svg>`,
+      
+      godzilla: `<svg viewBox="0 0 200 220" class="w-full h-full object-contain"><path d="M 50 210 L 70 70 Q 100 30 130 70 L 150 210 Z" fill="#374151" stroke="#111827" stroke-width="3" /><polygon points="100,20 86,55 114,55" fill="#38bdf8" /><polygon points="100,58 80,95 120,95" fill="#38bdf8" /><polygon points="100,98 75,135 125,135" fill="#0284c7" /><circle cx="82" cy="82" r="7" fill="#fef08a" stroke="#111827" stroke-width="2" /><circle cx="118" cy="82" r="7" fill="#fef08a" stroke="#111827" stroke-width="2" /><circle cx="82" cy="82" r="3" fill="#111827" /><circle cx="118" cy="82" r="3" fill="#111827" /><path d="M 95 102 L 100 220 L 105 102 Z" fill="#60a5fa" opacity="0.95" /></svg>`,
+      
+      mountain_monkey: `<svg viewBox="0 0 200 220" class="w-full h-full object-contain"><circle cx="100" cy="115" r="54" fill="#78350f" /><ellipse cx="100" cy="128" rx="38" ry="30" fill="#fef08a" /><circle cx="78" cy="118" r="6" fill="#1c1917" /><circle cx="122" cy="118" r="6" fill="#1c1917" /><path d="M 90 138 Q 100 146 110 138" stroke="#1c1917" stroke-width="3" fill="none" /><path d="M 42 100 C 42 38, 158 38, 158 100 Z" fill="#dc2626" /><rect x="55" y="78" width="90" height="24" rx="8" fill="#0f172a" stroke="#cbd5e1" stroke-width="2" /></svg>`,
+      
+      nai_long: `<svg viewBox="0 0 200 220" class="w-full h-full object-contain"><defs><linearGradient id="nlGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#facc15" /><stop offset="100%" stop-color="#eab308" /></linearGradient></defs><path d="M 45 130 C 45 50, 155 50, 155 130 C 155 200, 45 200, 45 130 Z" fill="url(#nlGrad)" stroke="#ca8a04" stroke-width="3" /><ellipse cx="100" cy="145" rx="42" ry="46" fill="#fef08a" /><path d="M 70 55 Q 60 30 75 35 Z" fill="#f59e0b" /><path d="M 130 55 Q 140 30 125 35 Z" fill="#f59e0b" /><circle cx="76" cy="92" r="13" fill="#ffffff" stroke="#1c1917" stroke-width="2" /><circle cx="124" cy="92" r="13" fill="#ffffff" stroke="#1c1917" stroke-width="2" /><circle cx="78" cy="92" r="7" fill="#15803d" /><circle cx="122" cy="92" r="7" fill="#15803d" /><circle cx="80" cy="90" r="2.5" fill="#ffffff" /><circle cx="120" cy="90" r="2.5" fill="#ffffff" /><path d="M 78 112 Q 100 132 122 112 Z" fill="#451a03" stroke="#1c1917" stroke-width="2" /><path d="M 88 112 Q 100 120 112 112 Z" fill="#f43f5e" /></svg>`,
+      
+      nai_wah: `<svg viewBox="0 0 200 220" class="w-full h-full object-contain"><defs><linearGradient id="nwGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#fde047" /><stop offset="100%" stop-color="#eab308" /></linearGradient><linearGradient id="nwHand" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#84cc16" /><stop offset="100%" stop-color="#4d7c0f" /></linearGradient></defs><path d="M 100 20 C 135 20, 162 78, 162 138 C 162 192, 38 192, 38 138 C 38 78, 65 20, 100 20 Z" fill="url(#nwGrad)" stroke="#ca8a04" stroke-width="3" /><ellipse cx="100" cy="132" rx="44" ry="42" fill="#fef9c3" opacity="0.95" /><circle cx="78" cy="62" r="11" fill="#a3e635" stroke="#4d7c0f" stroke-width="1.5" /><circle cx="122" cy="62" r="11" fill="#a3e635" stroke="#4d7c0f" stroke-width="1.5" /><circle cx="78" cy="62" r="7" fill="#15803d" /><circle cx="122" cy="62" r="7" fill="#15803d" /><circle cx="78" cy="62" r="3.5" fill="#0f172a" /><circle cx="122" cy="62" r="3.5" fill="#0f172a" /><circle cx="76" cy="60" r="1.5" fill="#ffffff" /><circle cx="120" cy="60" r="1.5" fill="#ffffff" /><path d="M 96 75 Q 100 78 104 75" stroke="#854d0e" stroke-width="2" fill="none" stroke-linecap="round" /><path d="M 48 120 C 45 138, 62 145, 78 142 M 72 135 L 82 137 M 72 142 L 82 143 M 70 148 L 80 148" stroke="url(#nwHand)" stroke-width="5" fill="none" stroke-linecap="round" /><path d="M 152 120 C 155 138, 138 145, 122 142 M 128 135 L 118 137 M 128 142 L 118 143 M 130 148 L 120 148" stroke="url(#nwHand)" stroke-width="5" fill="none" stroke-linecap="round" /><path d="M 72 184 L 68 202 M 68 202 L 58 205 M 68 202 L 68 206 M 68 202 L 78 205" stroke="url(#nwHand)" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round" /><path d="M 128 184 L 132 202 M 132 202 L 122 205 M 132 202 L 132 206 M 132 202 L 142 205" stroke="url(#nwHand)" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round" /></svg>`,
+
+      nai_dan: `<svg viewBox="0 0 200 220" class="w-full h-full object-contain"><defs><linearGradient id="ndGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#fef08a" /><stop offset="100%" stop-color="#facc15" /></linearGradient></defs><ellipse cx="100" cy="115" rx="65" ry="58" fill="url(#ndGrad)" stroke="#ca8a04" stroke-width="3.5" /><ellipse cx="100" cy="125" rx="42" ry="38" fill="#ffffff" opacity="0.9" /><circle cx="100" cy="125" r="22" fill="#f97316" /><circle cx="75" cy="95" r="8" fill="#1e293b" /><circle cx="125" cy="95" r="8" fill="#1e293b" /><circle cx="77" cy="93" r="3" fill="#ffffff" /><circle cx="123" cy="93" r="3" fill="#ffffff" /><ellipse cx="62" cy="108" rx="8" ry="5" fill="#f43f5e" opacity="0.5" /><ellipse cx="138" cy="108" rx="8" ry="5" fill="#f43f5e" opacity="0.5" /><path d="M 90 108 Q 100 118 110 108" stroke="#1e293b" stroke-width="3" fill="none" stroke-linecap="round" /></svg>`,
+      
+      roblox: `<svg viewBox="0 0 200 220" class="w-full h-full object-contain"><rect x="30" y="15" width="140" height="190" rx="18" fill="#dc2626" stroke="#991b1b" stroke-width="4" /><rect x="62" y="50" width="76" height="76" rx="10" transform="rotate(-12 100 88)" fill="#ffffff" /><rect x="87" y="75" width="26" height="26" rx="4" transform="rotate(-12 100 88)" fill="#dc2626" /><text x="100" y="172" font-family="'Inter', sans-serif" font-weight="900" font-size="20" fill="#ffffff" text-anchor="middle" letter-spacing="2">ROBLOX</text></svg>`,
+      
+      boba_tea: `<svg viewBox="0 0 200 220" class="w-full h-full object-contain"><polygon points="46,55 154,55 138,205 62,205" fill="#d97706" opacity="0.95" stroke="#78350f" stroke-width="3" /><circle cx="78" cy="175" r="12" fill="#0f172a" /><circle cx="105" cy="182" r="12" fill="#0f172a" /><circle cx="124" cy="168" r="12" fill="#0f172a" /><circle cx="92" cy="160" r="12" fill="#0f172a" /><line x1="100" y1="12" x2="100" y2="190" stroke="#dc2626" stroke-width="14" stroke-linecap="round" /></svg>`,
+      
+      popcat: `<svg viewBox="0 0 200 220" class="w-full h-full object-contain"><ellipse cx="100" cy="120" rx="70" ry="64" fill="#f8fafc" stroke="#0f172a" stroke-width="5" /><polygon points="40,70 25,20 70,55" fill="#f8fafc" stroke="#0f172a" stroke-width="4" /><polygon points="160,70 175,20 130,55" fill="#f8fafc" stroke="#0f172a" stroke-width="4" /><circle cx="70" cy="98" r="9" fill="#000000" /><circle cx="130" cy="98" r="9" fill="#000000" /><circle cx="100" cy="142" r="26" fill="#0f172a" /></svg>`
+    };
+
+    // Default Grad Hat Badge SVG for photo box fallback
+    const DEFAULT_GRAD_HAT = `<svg viewBox="0 0 100 100" class="w-14 h-14 text-amber-700 opacity-80"><path fill="currentColor" d="M50,15 L90,32 L50,49 L10,32 Z M20,42 L20,68 C20,78 80,78 80,68 L80,42 L50,55 Z"/></svg>`;
+
+    let customUploadedPhoto = null;
+
+    
+    // Toast Notification System
+    function showToast(message, icon = '✅') {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastIcon').textContent = icon;
+      document.getElementById('toastMsg').textContent = message;
+      
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
+    }
+
+    // Tab Navigation
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+
+      document.getElementById(tabId).classList.remove('hidden');
+      document.getElementById('btn-' + tabId).classList.add('active');
+    }
+
+    // Set Theme Color
+    function setCertTheme(themeClass) {
+      document.body.className = `bg-slate-950 text-slate-100 min-h-screen font-sans flex flex-col lg:flex-row relative overflow-x-hidden ${themeClass}`;
+      updateCertificateView();
+      showToast('證書主題已更新', '🎨');
+    }
+
+    // Pinyin Dictionary
+    const pinyinDict = { '李': 'Li', '王': 'Wang', '張': 'Zhang', '劉': 'Liu', '陳': 'Chen', '楊': 'Yang', '黃': 'Huang', '趙': 'Zhao', '吳': 'Wu', '周': 'Zhou', '徐': 'Xu', '孫': 'Sun', '馬': 'Ma', '朱': 'Zhu', '胡': 'Hu', '郭': 'Guo', '何': 'He', '高': 'Gao', '林': 'Lin', '羅': 'Luo', '鄭': 'Zheng', '梁': 'Liang', '謝': 'Xie', '宋': 'Song', '唐': 'Tang', '許': 'Xu', '韓': 'Han', '馮': 'Feng', '鄧': 'Deng', '曹': 'Cao', '明': 'Ming', '華': 'Hua', '小': 'Xiao', '龍': 'Long', '蛙': 'Wah', '蛋': 'Dan', '大': 'Da', '寶': 'Bao', '星': 'Xing', '海': 'Hai' };
+
+    function convertToPinyin() {
+      const zhName = document.getElementById('inputNameZh').value.trim();
+      if (!zhName) return;
+
+      let result = [];
+      for (let i = 0; i < zhName.length; i++) {
+        const char = zhName[i];
+        result.push(pinyinDict[char] || char);
+      }
+
+      if (result.length > 0) {
+        let enFormatted = result.length === 1 ? result[0] : `${result[0]} ${result.slice(1).join('-')}`;
+        document.getElementById('inputNameEn').value = enFormatted;
+        updateCertificateView();
+        showToast('拼音轉換完成', '⚡');
+      }
+    }
+
+    // Photo Handlers
+    function handlePhotoUpload(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          customUploadedPhoto = e.target.result;
+          document.getElementById('photoStatusText').textContent = '大頭照：目前為個人上傳照片';
+          updateCertificateView();
+          showToast('個人照片上傳成功！', '📸');
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    function usePresetPhoto() {
+      customUploadedPhoto = null;
+      document.getElementById('photoStatusText').textContent = '大頭照：目前為學士服圖騰';
+      updateCertificateView();
+      showToast('已清除個人大頭照', '🔄');
+    }
+
+    function updatePresetsForUniversity(pKey) {
+      const config = UNIV_CONFIGS[pKey] || UNIV_CONFIGS['clapping_cat'];
+      
+      const degreeSelect = document.getElementById('selectDegreePreset');
+      degreeSelect.innerHTML = '';
+      config.degrees.forEach(deg => {
+        const opt = document.createElement('option');
+        opt.value = deg;
+        opt.textContent = `📜 ${deg}`;
+        degreeSelect.appendChild(opt);
+      });
+      document.getElementById('inputDegree').value = config.degrees[0];
+
+      const majorSelect = document.getElementById('selectMajorPreset');
+      majorSelect.innerHTML = '';
+      config.majors.forEach(maj => {
+        const opt = document.createElement('option');
+        opt.value = maj;
+        opt.textContent = `💡 ${maj}`;
+        majorSelect.appendChild(opt);
+      });
+      document.getElementById('inputMajor').value = config.majors[0];
+
+      if (config.defaultDesc) {
+        document.getElementById('inputDesc').value = config.defaultDesc;
+      }
+    }
+
+    function applyDegreePreset() {
+      document.getElementById('inputDegree').value = document.getElementById('selectDegreePreset').value;
+      updateCertificateView();
+    }
+
+    function applyMajorPreset() {
+      document.getElementById('inputMajor').value = document.getElementById('selectMajorPreset').value;
+      updateCertificateView();
+    }
+
+    function handlePrimaryUnivChange() {
+      updatePresetsForUniversity(document.getElementById('selectPrimaryUniv').value);
+      updateCertificateView();
+    }
+
+    function updateCertificateView() {
+      const pKey = document.getElementById('selectPrimaryUniv').value;
+      const isDual = document.getElementById('toggleDualDegree').checked;
+      const sKey = document.getElementById('selectSecondaryUniv').value;
+      const sealStyle = document.getElementById('selectSealStyle').value;
+      const mascotPos = document.getElementById('selectMascotPosition').value;
+
+      const pConfig = UNIV_CONFIGS[pKey] || UNIV_CONFIGS['clapping_cat'];
+      const sConfig = UNIV_CONFIGS[sKey] || UNIV_CONFIGS['serious_study'];
+
+      const nameZh = document.getElementById('inputNameZh').value.trim();
+      const nameEn = document.getElementById('inputNameEn').value.trim();
+      const nameForFilename = nameZh || nameEn || '畢業生';
+
+      let fullUnivName = pConfig.nameZh;
+      if (isDual) fullUnivName = `${pConfig.nameZh}與${sConfig.nameZh}`;
+      
+      const generatedFilename = `${nameForFilename}${fullUnivName}畢業證書`;
+      document.title = generatedFilename;
+      document.getElementById('pdfFilenameNotice').textContent = `${generatedFilename}.png`;
+
+      // 1. Update Student Photo Box
+      const photoContainer = document.getElementById('certPhotoContainer');
+      if (customUploadedPhoto) {
+        photoContainer.innerHTML = `<img src="${customUploadedPhoto}" class="w-full h-full object-cover" alt="Student Photo">`;
+      } else {
+        photoContainer.innerHTML = DEFAULT_GRAD_HAT;
+      }
+
+      // 2. Render Full University Mascot Character on Side
+      const mascotBox = document.getElementById('sideMascotContainer');
+      const mascotSvgWrapper = document.getElementById('mascotSvgWrapper');
+      
+      if (mascotPos === 'none') {
+        mascotBox.classList.add('hidden');
+      } else {
+        mascotBox.classList.remove('hidden');
+        if (mascotPos === 'left') {
+          mascotBox.className = "absolute left-8 bottom-16 w-48 h-64 z-20 flex flex-col items-center justify-end pointer-events-none transition-all duration-300";
+        } else {
+          mascotBox.className = "absolute right-8 bottom-16 w-48 h-64 z-20 flex flex-col items-center justify-end pointer-events-none transition-all duration-300";
+        }
+        mascotSvgWrapper.innerHTML = CHARACTER_VISUALS[pConfig.svgKey];
+        document.getElementById('mascotNameTag').textContent = `${pConfig.nameZh} 代表`;
+      }
+
+      // 3. Logos & Watermarks
+      document.getElementById('primaryLogoBadge').innerHTML = CHARACTER_VISUALS[pConfig.svgKey];
+      document.getElementById('watermarkIcon').innerHTML = CHARACTER_VISUALS[pConfig.svgKey];
+
+      // 4. Text Fields Update
+      document.getElementById('displayNameEn').textContent = document.getElementById('inputNameEn').value;
+      document.getElementById('displayDegree').textContent = document.getElementById('inputDegree').value;
+      document.getElementById('displayMajor').textContent = '主修：' + document.getElementById('inputMajor').value;
+      document.getElementById('displayDesc').textContent = document.getElementById('inputDesc').value;
+      document.getElementById('displayDate').textContent = '頒發日期：' + document.getElementById('inputDate').value;
+      document.getElementById('displayCertId').textContent = document.getElementById('inputCertId').value;
+      document.getElementById('displayHonorBadge').textContent = document.getElementById('selectHonorBadge').value;
+
+      // 5. Theme Colors 
+      document.documentElement.style.setProperty('--border-color', pConfig.primaryColor);
+      document.getElementById('displayDegree').style.color = pConfig.accentColor;
+
+      // 6. Layout adjustments for Single vs Dual
+      if (!isDual) {
+        document.getElementById('displayUnivTitle').textContent = pConfig.nameEn;
+        document.getElementById('displayUnivSubTitle').textContent = pConfig.subZh;
+
+        document.getElementById('dualConnectorSymbol').classList.add('hidden');
+        document.getElementById('secondaryLogoBadge').classList.add('hidden');
+        document.getElementById('sealSecondary').classList.add('hidden');
+
+        document.getElementById('sigLeftName').textContent = pConfig.sigLeftName;
+        document.getElementById('sigLeftTitle').textContent = pConfig.sigLeftTitle;
+        document.getElementById('sigLeftSub').textContent = pConfig.sigLeftSub;
+        document.getElementById('sigRightName').textContent = pConfig.sigRightName;
+        document.getElementById('sigRightTitle').textContent = pConfig.sigRightTitle;
+
+        document.getElementById('sealPrimary').className = `relative w-16 h-16 ${sealStyle} rounded-full border border-amber-200/50 flex items-center justify-center p-1.5 shadow-md`;
+        document.getElementById('seal1Icon').textContent = pConfig.sealIcon;
+        document.getElementById('seal1Text').textContent = pConfig.sealTitle;
+
+      } else {
+        document.getElementById('displayUnivTitle').textContent = `${pConfig.nameEn} ✕ ${sConfig.nameEn}`;
+        document.getElementById('displayUnivSubTitle').textContent = `${pConfig.nameZh} ＆ ${sConfig.nameZh} 聯合頒發`;
+
+        document.getElementById('dualConnectorSymbol').classList.remove('hidden');
+        document.getElementById('secondaryLogoBadge').classList.remove('hidden');
+        document.getElementById('secondaryLogoBadge').classList.add('flex');
+        document.getElementById('secondaryLogoBadge').innerHTML = CHARACTER_VISUALS[sConfig.svgKey];
+
+        document.getElementById('sigLeftName').textContent = pConfig.sigLeftName;
+        document.getElementById('sigLeftTitle').textContent = pConfig.sigLeftTitle;
+        document.getElementById('sigLeftSub').textContent = `${pConfig.nameZh} 校長代表`;
+        document.getElementById('sigRightName').textContent = sConfig.sigLeftName;
+        document.getElementById('sigRightTitle').textContent = sConfig.sigLeftTitle;
+
+        document.getElementById('sealPrimary').className = `relative w-14 h-14 ${sealStyle} rounded-full border border-amber-200/50 flex items-center justify-center p-1.5 shadow-md`;
+        document.getElementById('seal1Icon').textContent = pConfig.sealIcon;
+        document.getElementById('seal1Text').textContent = pConfig.sealTitle;
+
+        document.getElementById('sealSecondary').classList.remove('hidden');
+        document.getElementById('sealSecondary').className = `relative w-14 h-14 ${sConfig.sealBgClass} rounded-full border border-red-200/50 flex items-center justify-center p-1.5 shadow-md`;
+        document.getElementById('seal2Icon').textContent = sConfig.sealIcon;
+        document.getElementById('seal2Text').textContent = sConfig.sealTitle;
+      }
+    }
+
+    // Export Canvas to High Quality PNG
+    function exportToPNG() {
+      const btn = document.getElementById('btnExport');
+      const originalHTML = btn.innerHTML;
+      
+      btn.innerHTML = `<span class="animate-spin text-lg">⏳</span> <span>正在渲染高清圖片...</span>`;
+      btn.classList.add('opacity-80', 'cursor-not-allowed');
+      btn.disabled = true;
+
+      setTimeout(() => {
+        const certElement = document.getElementById('certContainer');
+        html2canvas(certElement, {
+          scale: 2,
+          useCORS: true,
+          backgroundColor: null,
+          logging: false
+        }).then(canvas => {
+          const link = document.createElement('a');
+          link.download = `${document.title}.png`;
+          link.href = canvas.toDataURL('image/png');
+          link.click();
+          
+          btn.innerHTML = originalHTML;
+          btn.classList.remove('opacity-80', 'cursor-not-allowed');
+          btn.disabled = false;
+          
+          showToast('證書圖片已成功匯出下載！', '🎉');
+        }).catch(err => {
+          btn.innerHTML = originalHTML;
+          btn.disabled = false;
+          showToast('匯出失敗，請重試', '❌');
+          console.error(err);
+        });
+      }, 150);
+    }
+
+    // Randomize Certificate
+    function randomizeMemeCert() {
+      const univKeys = Object.keys(UNIV_CONFIGS);
+      document.getElementById('selectPrimaryUniv').value = univKeys[Math.floor(Math.random() * univKeys.length)];
+      document.getElementById('toggleDualDegree').checked = Math.random() > 0.5;
+      if(document.getElementById('toggleDualDegree').checked) {
+         document.getElementById('selectSecondaryUniv').value = univKeys[Math.floor(Math.random() * univKeys.length)];
+      }
+      
+      handlePrimaryUnivChange();
+      showToast('已隨機生成全新迷因證書！', '🎲');
+    }
+
+    // Reset Defaults
+    function resetDefaults() {
+      document.getElementById('selectPrimaryUniv').value = 'clapping_cat';
+      document.getElementById('toggleDualDegree').checked = false;
+      document.getElementById('inputNameZh').value = '王小明';
+      document.getElementById('inputNameEn').value = 'Xiao-Ming Wang';
+      document.getElementById('selectMascotPosition').value = 'right';
+      usePresetPhoto();
+      handlePrimaryUnivChange();
+      setCertTheme('theme-ivory');
+      showToast('已還原為原廠預設值', '🔄');
+    }
+
+    // Initialization & Event Listeners
+    document.getElementById('selectPrimaryUniv').addEventListener('change', handlePrimaryUnivChange);
+
+    document.querySelectorAll('input, select, textarea').forEach(el => {
+      if (!['selectPrimaryUniv', 'selectDegreePreset', 'selectMajorPreset', 'uploadPhotoInput'].includes(el.id)) {
+        el.addEventListener('input', updateCertificateView);
+        el.addEventListener('change', updateCertificateView);
+      }
+    });
+
+    document.getElementById('toggleDualDegree').addEventListener('change', (e) => {
+      document.getElementById('secondaryUnivBox').classList.toggle('hidden', !e.target.checked);
+      updateCertificateView();
+    });
+
+    window.onload = function() {
+      handlePrimaryUnivChange();
+    };
+  </script>
+</body>
+</html>
