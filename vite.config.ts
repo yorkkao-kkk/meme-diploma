@@ -11,6 +11,7 @@ export default defineConfig(() => {
     base: '/',
     plugins: [react(), tailwindcss()],
     resolve: {
+      extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json'],
       alias: {
         '@': path.resolve(__dirname, '.'),
       },
