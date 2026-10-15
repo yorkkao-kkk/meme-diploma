@@ -1,0 +1,85 @@
+<svg viewBox="0 0 240 260" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="ssbAura" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.9" />
+      <stop offset="50%" stop-color="#818cf8" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#c084fc" stop-opacity="0.6" />
+    </linearGradient>
+    <linearGradient id="ssbBody" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <filter id="speedBlur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" />
+    </filter>
+  </defs>
+
+  <!-- Motion wind streaks (Sliding Dodgestep Speed Trails) -->
+  <path d="M 20 80 Q 40 85 80 82" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" opacity="0.6" />
+  <path d="M 10 130 Q 35 135 70 132" stroke="#818cf8" stroke-width="4" stroke-linecap="round" opacity="0.7" />
+  <path d="M 15 175 Q 45 180 85 178" stroke="#38bdf8" stroke-width="5" stroke-linecap="round" opacity="0.8" />
+  <path d="M 5 215 Q 30 220 75 218" stroke="#c084fc" stroke-width="4" stroke-linecap="round" opacity="0.6" />
+
+  <!-- Ghost afterimage (瞬移殘影) -->
+  <g opacity="0.25" transform="translate(-22, 6) scale(0.96)" filter="url(#speedBlur)">
+    <circle cx="140" cy="55" r="28" fill="#38bdf8" />
+    <path d="M 115 85 Q 165 85 155 160 L 105 160 Z" fill="#38bdf8" />
+    <path d="M 105 160 L 80 230 L 105 235 L 125 170 Z" fill="#38bdf8" />
+    <path d="M 145 160 L 175 220 L 195 210 L 160 160 Z" fill="#38bdf8" />
+  </g>
+
+  <!-- Shadow below feet -->
+  <ellipse cx="140" cy="246" rx="65" ry="10" fill="#090d16" opacity="0.35" />
+
+  <!-- Main Dancer Body (趙鐵春式花鼓燈閃身步，身體側移傾斜，手勢靈動風流) -->
+  <!-- Left Leg (Planting foot with bend) -->
+  <path d="M 115 150 L 85 210 L 65 240 L 95 242 L 122 185 Z" fill="#1e293b" stroke="#0f172a" stroke-width="3" stroke-linejoin="round" />
+  <!-- Left Shoe (Traditional black cloth shoe with red trim) -->
+  <path d="M 60 238 C 50 240, 50 248, 70 248 L 100 248 C 105 248, 105 240, 95 238 Z" fill="#0f172a" stroke="#dc2626" stroke-width="2" />
+
+  <!-- Right Leg (Sidestepping extended leg, dramatic angle) -->
+  <path d="M 145 150 L 178 195 L 205 235 L 180 242 L 150 180 Z" fill="#1e293b" stroke="#0f172a" stroke-width="3" stroke-linejoin="round" />
+  <!-- Right Shoe -->
+  <path d="M 175 238 C 170 240, 185 248, 215 248 C 225 248, 225 240, 210 238 Z" fill="#0f172a" stroke="#dc2626" stroke-width="2" />
+
+  <!-- Torso leaning sideways (經典腰腹發力閃身傾斜) -->
+  <path d="M 105 90 C 135 85, 175 88, 168 155 C 150 162, 115 162, 105 155 Z" fill="url(#ssbBody)" stroke="#0f172a" stroke-width="3" />
+  <!-- Martial/Dance Vest & Sash (紅腰帶與國風盤扣) -->
+  <path d="M 108 138 C 135 142, 155 140, 165 138 L 164 152 C 145 156, 120 156, 107 150 Z" fill="#dc2626" stroke="#b91c1c" stroke-width="1.5" />
+  <!-- Sash ribbons fluttering with wind -->
+  <path d="M 110 148 Q 80 160 55 155 Q 75 168 108 156 Z" fill="#ef4444" />
+  <path d="M 112 150 Q 75 180 48 182 Q 72 188 110 158 Z" fill="#dc2626" />
+
+  <!-- Flowing Arms (左手按掌，右手向外瀟灑亮掌) -->
+  <!-- Left Arm (Tucked near chest/waist) -->
+  <path d="M 112 98 Q 85 110 92 135 Q 102 140 108 125 Z" fill="#1e293b" stroke="#0f172a" stroke-width="3" />
+  <!-- Left Hand -->
+  <circle cx="94" cy="135" r="9" fill="#fed7aa" stroke="#ea580c" stroke-width="1.5" />
+
+  <!-- Right Arm (Extended with flourish and energy) -->
+  <path d="M 160 95 Q 195 105 210 90 Q 215 95 195 118 Q 170 120 155 110 Z" fill="#1e293b" stroke="#0f172a" stroke-width="3" />
+  <!-- Right Hand (Orchid / martial gesture) -->
+  <path d="M 208 88 C 218 82, 228 85, 224 95 C 220 102, 212 100, 206 95 Z" fill="#fed7aa" stroke="#ea580c" stroke-width="1.5" />
+
+  <!-- Head & Neck -->
+  <path d="M 132 82 L 140 95 L 146 95 L 142 82 Z" fill="#fed7aa" />
+  <circle cx="140" cy="60" r="26" fill="#fed7aa" stroke="#ea580c" stroke-width="2" />
+  <!-- Hair (Sleek side-parted dance hairstyle) -->
+  <path d="M 116 56 C 118 36, 155 32, 164 45 C 166 58, 160 62, 155 60 C 145 42, 125 45, 116 56 Z" fill="#0f172a" />
+
+  <!-- Confident, silky smiling facial expression -->
+  <!-- Eyebrows (Slanted, lively and witty) -->
+  <path d="M 124 50 Q 133 46 138 52" stroke="#0f172a" stroke-width="2.5" stroke-linecap="round" fill="none" />
+  <path d="M 145 52 Q 152 46 160 50" stroke="#0f172a" stroke-width="2.5" stroke-linecap="round" fill="none" />
+  <!-- Eyes with cheerful crinkle -->
+  <path d="M 126 58 Q 132 55 137 60" stroke="#0f172a" stroke-width="2.5" stroke-linecap="round" fill="none" />
+  <path d="M 147 60 Q 153 55 158 58" stroke="#0f172a" stroke-width="2.5" stroke-linecap="round" fill="none" />
+  <!-- Cheerful Smile (瀟灑愜意微笑道別 / 下班開溜之笑) -->
+  <path d="M 134 70 Q 142 78 152 70" stroke="#991b1b" stroke-width="2.5" stroke-linecap="round" fill="none" />
+  <ellipse cx="143" cy="72" rx="3" ry="1.5" fill="#f87171" />
+
+  <!-- Energy sparks & "SWOOSH" sound effect lines -->
+  <path d="M 195 65 L 210 55 M 205 72 L 225 70 M 200 80 L 220 90" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" />
+  <text x="35" y="42" font-family="'Cinzel', 'Noto Serif TC', sans-serif" font-weight="900" font-size="13" fill="#0284c7" letter-spacing="1">⚡ 絲滑開溜</text>
+  <text x="35" y="58" font-family="'Cinzel', sans-serif" font-weight="bold" font-size="10" fill="#64748b" letter-spacing="2">DODGE STEP</text>
+</svg>

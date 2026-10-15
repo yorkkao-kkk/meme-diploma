@@ -1,0 +1,50 @@
+<svg viewBox="0 0 240 260" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="nlBody" cx="50%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="60%" stop-color="#facc15" />
+      <stop offset="100%" stop-color="#eab308" />
+    </radialGradient>
+    <radialGradient id="nlBelly" cx="50%" cy="45%" r="60%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#fef9c3" />
+    </radialGradient>
+  </defs>
+
+  <!-- Shadow -->
+  <ellipse cx="120" cy="245" rx="65" ry="10" fill="#000000" opacity="0.25" />
+
+  <!-- Chubby Yellow Dragon Body (大肚腩呆萌小奶龍) -->
+  <path d="M 55 145 C 55 60, 185 60, 185 145 C 185 225, 55 225, 55 145 Z" fill="url(#nlBody)" stroke="#ca8a04" stroke-width="3.5" />
+
+  <!-- Little Orange Dragon Horns -->
+  <path d="M 85 62 Q 72 32 90 38 Q 94 48 95 62 Z" fill="#f97316" stroke="#c2410c" stroke-width="2" />
+  <path d="M 155 62 Q 168 32 150 38 Q 146 48 145 62 Z" fill="#f97316" stroke="#c2410c" stroke-width="2" />
+
+  <!-- Big Round Yellow Belly -->
+  <ellipse cx="120" cy="165" rx="52" ry="52" fill="url(#nlBelly)" stroke="#facc15" stroke-width="2" />
+
+  <!-- Cute Big Eyes with Green Irises -->
+  <circle cx="92" cy="102" r="16" fill="#ffffff" stroke="#1c1917" stroke-width="2.5" />
+  <circle cx="148" cy="102" r="16" fill="#ffffff" stroke="#1c1917" stroke-width="2.5" />
+  <circle cx="94" cy="102" r="9" fill="#16a34a" />
+  <circle cx="146" cy="102" r="9" fill="#16a34a" />
+  <circle cx="96" cy="100" r="4" fill="#ffffff" />
+  <circle cx="144" cy="100" r="4" fill="#ffffff" />
+
+  <!-- Blushing Cheeks -->
+  <ellipse cx="74" cy="118" rx="8" ry="5" fill="#f87171" opacity="0.6" />
+  <ellipse cx="166" cy="118" rx="8" ry="5" fill="#f87171" opacity="0.6" />
+
+  <!-- Open Cheerful Laughing Mouth -->
+  <path d="M 95 124 Q 120 148 145 124 Z" fill="#881337" stroke="#1c1917" stroke-width="2.5" />
+  <path d="M 106 125 Q 120 135 134 125 Z" fill="#f43f5e" />
+
+  <!-- Stubby Little Dragon Arms -->
+  <ellipse cx="62" cy="155" rx="14" ry="10" fill="#facc15" stroke="#ca8a04" stroke-width="2" transform="rotate(25 62 155)" />
+  <ellipse cx="178" cy="155" rx="14" ry="10" fill="#facc15" stroke="#ca8a04" stroke-width="2" transform="rotate(-25 178 155)" />
+
+  <!-- Stubby Feet -->
+  <ellipse cx="94" cy="225" rx="18" ry="12" fill="#eab308" stroke="#ca8a04" stroke-width="2.5" />
+  <ellipse cx="146" cy="225" rx="18" ry="12" fill="#eab308" stroke="#ca8a04" stroke-width="2.5" />
+</svg>

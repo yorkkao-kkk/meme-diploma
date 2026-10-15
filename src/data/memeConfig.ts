@@ -3,6 +3,7 @@ export interface UniversityConfig {
   nameEn: string;
   subZh: string;
   svgKey: string;
+  imagePath: string;
   primaryColor: string;
   accentColor: string;
   sigLeftName: string;
@@ -20,11 +21,41 @@ export interface UniversityConfig {
 }
 
 export const UNIV_CONFIGS: Record<string, UniversityConfig> = {
+  shanshenbu: {
+    nameZh: "絲滑閃身步開溜大學",
+    nameEn: "SILKY DODGE STEP UNIV",
+    subZh: "花 鼓 燈 瞬 移 閃 身 步 絲 滑 開 溜 頂 級 認 證",
+    svgKey: "shanshenbu",
+    imagePath: "/characters/shanshenbu.svg",
+    primaryColor: "#0284c7",
+    accentColor: "#0369a1",
+    sigLeftName: "Master Zhao",
+    sigLeftTitle: "閃身步創始人：趙大師 (Master Zhao)",
+    sigLeftSub: "非遺花鼓燈身法總教頭",
+    sigRightName: "Swift Evasion",
+    sigRightTitle: "教務長：準時開溜人 (Quick Evasion)",
+    sealBgClass: "seal-holo",
+    sealIcon: "⚡",
+    sealTitle: "DODGE",
+    sealSub: "STEP UNIV",
+    degrees: [
+      "Doctor of Silky Dodgestep & Swift Evasion",
+      "Master of Anhui Flower Drum Agile Sidestep",
+      "Bachelor of Rapid Workplace Disappearance"
+    ],
+    majors: [
+      "腰腹核心爆發力 & 絲滑橫移瞬移學",
+      "下班準時開溜不被主管發現步伐力學",
+      "靈活走位閃躲尷尬社交心理學"
+    ],
+    defaultDesc: "精通安徽花鼓燈「閃身步」精髓，腰腹發力瞬間側移開溜，身法絲滑如微風拂柳，瀟灑瞬移不著痕跡，特頒發最高榮譽博士學位。"
+  },
   clapping_cat: {
     nameZh: "拍手黑貓鼓掌大學",
     nameEn: "CLAPPING BLACK CAT UNIV",
     subZh: "拍 手 黑 貓 鼓 掌 大 學 熱 烈 讚 賞 頂 級 認 證",
     svgKey: "clapping_cat",
+    imagePath: "/characters/clapping_cat.svg",
     primaryColor: "#334155",
     accentColor: "#0f172a",
     sigLeftName: "Clapping Kitty",
@@ -53,6 +84,7 @@ export const UNIV_CONFIGS: Record<string, UniversityConfig> = {
     nameEn: "SERIOUS STUDY MEME UNIV",
     subZh: "嚴 肅 認 真 絕 不 擺 爛 專 注 學習 頂 級 認 證",
     svgKey: "serious_study",
+    imagePath: "/characters/serious_study.svg",
     primaryColor: "#1e293b",
     accentColor: "#0284c7",
     sigLeftName: "Serious Guy",
@@ -81,6 +113,7 @@ export const UNIV_CONFIGS: Record<string, UniversityConfig> = {
     nameEn: "CAPYBARA UNIVERSITY",
     subZh: "水 豚 大 學 鬆 弛 感 頂 級 榮 譽 認 證",
     svgKey: "capybara",
+    imagePath: "/characters/capybara.svg",
     primaryColor: "#b8860b",
     accentColor: "#854d0e",
     sigLeftName: "Capybara Lord",
@@ -109,6 +142,7 @@ export const UNIV_CONFIGS: Record<string, UniversityConfig> = {
     nameEn: "CHIIKAWA WEED PULLING UNIV",
     subZh: "吉 伊 卡 哇 拔 草 檢 定 頂 級 榮 譽 認 證",
     svgKey: "chiikawa",
+    imagePath: "/characters/chiikawa.svg",
     primaryColor: "#0284c7",
     accentColor: "#0369a1",
     sigLeftName: "Chiikawa",
@@ -137,6 +171,7 @@ export const UNIV_CONFIGS: Record<string, UniversityConfig> = {
     nameEn: "GODZILLA ATOMIC UNIV",
     subZh: "哥 吉 拉 爆 射 熱 線 怪 獸 破 壞 認 證",
     svgKey: "godzilla",
+    imagePath: "/characters/godzilla.svg",
     primaryColor: "#dc2626",
     accentColor: "#991b1b",
     sigLeftName: "King Godzilla",
@@ -165,6 +200,7 @@ export const UNIV_CONFIGS: Record<string, UniversityConfig> = {
     nameEn: "MOUNTAIN MONKEY RACING UNIV",
     subZh: "山 道 猴 子 莫 生 氣 車 神 榮 譽 認 證",
     svgKey: "mountain_monkey",
+    imagePath: "/characters/mountain_monkey.svg",
     primaryColor: "#ea580c",
     accentColor: "#c2410c",
     sigLeftName: "Mountain King",
@@ -193,6 +229,7 @@ export const UNIV_CONFIGS: Record<string, UniversityConfig> = {
     nameEn: "NAI LONG UNIVERSITY",
     subZh: "奶 龍 大 學 頂 級 萌 獸 榮 譽 學 位 認 證",
     svgKey: "nai_long",
+    imagePath: "/characters/nai_long.svg",
     primaryColor: "#d97706",
     accentColor: "#b45309",
     sigLeftName: "Nai Long",
@@ -221,6 +258,7 @@ export const UNIV_CONFIGS: Record<string, UniversityConfig> = {
     nameEn: "NAI WAH UNIVERSITY",
     subZh: "奶 蛙 大 學 咕 嚕 萌 動 榮 譽 學 位 認 證",
     svgKey: "nai_wah",
+    imagePath: "/characters/nai_wah.svg",
     primaryColor: "#eab308",
     accentColor: "#854d0e",
     sigLeftName: "Nai Wah",
@@ -249,6 +287,7 @@ export const UNIV_CONFIGS: Record<string, UniversityConfig> = {
     nameEn: "NAI DAN UNIVERSITY",
     subZh: "奶 蛋 大 學 圓 潤 流 心 榮 譽 學 位 認 證",
     svgKey: "nai_dan",
+    imagePath: "/characters/nai_dan.svg",
     primaryColor: "#eab308",
     accentColor: "#ca8a04",
     sigLeftName: "Nai Dan",
@@ -277,6 +316,7 @@ export const UNIV_CONFIGS: Record<string, UniversityConfig> = {
     nameEn: "ROBLOX MEME UNIVERSITY",
     subZh: "羅 布 樂 思 創 建 者 與 迷 因 實 務 認 證",
     svgKey: "roblox",
+    imagePath: "/characters/roblox.svg",
     primaryColor: "#dc2626",
     accentColor: "#991b1b",
     sigLeftName: "David Baszucki",
@@ -305,6 +345,7 @@ export const UNIV_CONFIGS: Record<string, UniversityConfig> = {
     nameEn: "BOBA TEA CHAIN UNIV",
     subZh: "珍 珠 奶 茶 冰 塊 甜 度 精 密 控制 認 證",
     svgKey: "boba_tea",
+    imagePath: "/characters/boba_tea.svg",
     primaryColor: "#d97706",
     accentColor: "#92400e",
     sigLeftName: "Boba Master",
@@ -333,6 +374,7 @@ export const UNIV_CONFIGS: Record<string, UniversityConfig> = {
     nameEn: "POPCAT CLICKING UNIV",
     subZh: "迷 因 貓 POPCAT 嘴 吧 開 合 點 擊 認 證",
     svgKey: "popcat",
+    imagePath: "/characters/popcat.svg",
     primaryColor: "#1e293b",
     accentColor: "#0284c7",
     sigLeftName: "Pop Cat",
@@ -358,19 +400,36 @@ export const UNIV_CONFIGS: Record<string, UniversityConfig> = {
   }
 };
 
+export const CHARACTER_IMAGES: Record<string, string> = {
+  shanshenbu: "/characters/shanshenbu.svg",
+  clapping_cat: "/characters/clapping_cat.svg",
+  serious_study: "/characters/serious_study.svg",
+  capybara: "/characters/capybara.svg",
+  chiikawa: "/characters/chiikawa.svg",
+  godzilla: "/characters/godzilla.svg",
+  mountain_monkey: "/characters/mountain_monkey.svg",
+  nai_long: "/characters/nai_long.svg",
+  nai_wah: "/characters/nai_wah.svg",
+  nai_dan: "/characters/nai_dan.svg",
+  roblox: "/characters/roblox.svg",
+  boba_tea: "/characters/boba_tea.svg",
+  popcat: "/characters/popcat.svg",
+};
+
 export const CHARACTER_VISUALS: Record<string, string> = {
-  clapping_cat: `<svg viewBox="0 0 200 220" class="w-full h-full object-contain"><defs><radialGradient id="catFur" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="#3f3f46" /><stop offset="70%" stop-color="#18181b" /><stop offset="100%" stop-color="#09090b" /></radialGradient><radialGradient id="catEye" cx="35%" cy="35%" r="65%"><stop offset="0%" stop-color="#fef08a" /><stop offset="50%" stop-color="#eab308" /><stop offset="100%" stop-color="#ca8a04" /></radialGradient></defs><path d="M 50 110 C 45 190, 155 190, 150 110 C 150 55, 50 55, 50 110 Z" fill="url(#catFur)" /><path d="M 55 80 L 32 20 C 50 25, 75 42, 80 60 Z" fill="url(#catFur)" /><path d="M 145 80 L 168 20 C 150 25, 125 42, 120 60 Z" fill="url(#catFur)" /><path d="M 58 75 L 42 35 L 70 60 Z" fill="#f43f5e" opacity="0.6" /><path d="M 142 75 L 158 35 L 130 60 Z" fill="#f43f5e" opacity="0.6" /><ellipse cx="75" cy="85" rx="14" ry="16" fill="url(#catEye)" /><ellipse cx="125" cy="85" rx="14" ry="16" fill="url(#catEye)" /><ellipse cx="75" cy="85" rx="4" ry="12" fill="#000000" /><ellipse cx="125" cy="85" rx="4" ry="12" fill="#000000" /><path d="M 76 108 Q 100 130 124 108 Z" fill="#ffffff" stroke="#09090b" stroke-width="2.5" /><ellipse cx="100" cy="118" rx="8" ry="5" fill="#f43f5e" /><path d="M 30 120 C 55 110, 80 135, 82 145 C 65 155, 35 150, 20 130 Z" fill="#3f3f46" stroke="#09090b" stroke-width="2" /><path d="M 170 120 C 145 110, 120 135, 118 145 C 135 155, 165 150, 180 130 Z" fill="#3f3f46" stroke="#09090b" stroke-width="2" /><circle cx="82" cy="142" r="5" fill="#fef08a" /><circle cx="118" cy="142" r="5" fill="#fef08a" /></svg>`,
-  serious_study: `<svg viewBox="0 0 200 220" class="w-full h-full object-contain"><defs><linearGradient id="suitGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1e293b" /><stop offset="100%" stop-color="#0f172a" /></linearGradient></defs><ellipse cx="100" cy="85" rx="60" ry="52" fill="#fffdf8" stroke="#0f172a" stroke-width="5" /><path d="M 40 170 C 40 130, 160 130, 160 170 L 170 220 L 30 220 Z" fill="url(#suitGrad)" stroke="#0f172a" stroke-width="4" /><polygon points="100,135 80,175 120,175" fill="#ffffff" /><polygon points="100,145 92,210 100,220 108,210" fill="#dc2626" /><path d="M 52 62 L 92 78" stroke="#0f172a" stroke-width="7" stroke-linecap="round" /><path d="M 148 62 L 108 78" stroke="#0f172a" stroke-width="7" stroke-linecap="round" /><ellipse cx="76" cy="88" rx="12" ry="9" fill="#ffffff" stroke="#0f172a" stroke-width="3.5" /><ellipse cx="124" cy="88" rx="12" ry="9" fill="#ffffff" stroke="#0f172a" stroke-width="3.5" /><circle cx="76" cy="88" r="5" fill="#0f172a" /><circle cx="124" cy="88" r="5" fill="#0f172a" /><line x1="85" y1="112" x2="115" y2="112" stroke="#0f172a" stroke-width="4.5" stroke-linecap="round" /></svg>`,
-  capybara: `<svg viewBox="0 0 200 220" class="w-full h-full object-contain"><defs><linearGradient id="capyFur" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#d97706" /><stop offset="60%" stop-color="#b45309" /><stop offset="100%" stop-color="#78350f" /></linearGradient></defs><path d="M 50 140 C 50 80, 150 80, 150 140 C 150 190, 50 190, 50 140 Z" fill="url(#capyFur)" /><path d="M 60 115 C 60 65, 140 65, 140 115 Z" fill="url(#capyFur)" /><ellipse cx="100" cy="128" rx="22" ry="14" fill="#451a03" /><ellipse cx="92" cy="126" rx="4" ry="6" fill="#1c1917" /><ellipse cx="108" cy="126" rx="4" ry="6" fill="#1c1917" /><path d="M 72 100 Q 82 92 90 100" stroke="#1c1917" stroke-width="4" stroke-linecap="round" fill="none" /><path d="M 110 100 Q 118 92 128 100" stroke="#1c1917" stroke-width="4" stroke-linecap="round" fill="none" /><circle cx="100" cy="48" r="18" fill="#ea580c" /><path d="M 100 30 Q 105 22 108 26" stroke="#16a34a" stroke-width="3" fill="none" /></svg>`,
-  chiikawa: `<svg viewBox="0 0 200 220" class="w-full h-full object-contain"><ellipse cx="100" cy="125" rx="66" ry="58" fill="#ffffff" stroke="#0284c7" stroke-width="5" /><ellipse cx="68" cy="74" rx="14" ry="18" fill="#ffffff" stroke="#0284c7" stroke-width="4" /><ellipse cx="132" cy="74" rx="14" ry="18" fill="#ffffff" stroke="#0284c7" stroke-width="4" /><ellipse cx="68" cy="74" rx="8" ry="11" fill="#f472b6" opacity="0.4" /><ellipse cx="132" cy="74" rx="8" ry="11" fill="#f472b6" opacity="0.4" /><circle cx="75" cy="118" r="8" fill="#0f172a" /><circle cx="125" cy="118" r="8" fill="#0f172a" /><circle cx="73" cy="115" r="3" fill="#ffffff" /><circle cx="123" cy="115" r="3" fill="#ffffff" /><path d="M 92 128 Q 100 136 108 128" stroke="#0284c7" stroke-width="4" fill="none" stroke-linecap="round" /><ellipse cx="60" cy="132" rx="9" ry="6" fill="#f472b6" opacity="0.6" /><ellipse cx="140" cy="132" rx="9" ry="6" fill="#f472b6" opacity="0.6" /></svg>`,
-  godzilla: `<svg viewBox="0 0 200 220" class="w-full h-full object-contain"><path d="M 50 210 L 70 70 Q 100 30 130 70 L 150 210 Z" fill="#374151" stroke="#111827" stroke-width="3" /><polygon points="100,20 86,55 114,55" fill="#38bdf8" /><polygon points="100,58 80,95 120,95" fill="#38bdf8" /><polygon points="100,98 75,135 125,135" fill="#0284c7" /><circle cx="82" cy="82" r="7" fill="#fef08a" stroke="#111827" stroke-width="2" /><circle cx="118" cy="82" r="7" fill="#fef08a" stroke="#111827" stroke-width="2" /><circle cx="82" cy="82" r="3" fill="#111827" /><circle cx="118" cy="82" r="3" fill="#111827" /><path d="M 95 102 L 100 220 L 105 102 Z" fill="#60a5fa" opacity="0.95" /></svg>`,
-  mountain_monkey: `<svg viewBox="0 0 200 220" class="w-full h-full object-contain"><circle cx="100" cy="115" r="54" fill="#78350f" /><ellipse cx="100" cy="128" rx="38" ry="30" fill="#fef08a" /><circle cx="78" cy="118" r="6" fill="#1c1917" /><circle cx="122" cy="118" r="6" fill="#1c1917" /><path d="M 90 138 Q 100 146 110 138" stroke="#1c1917" stroke-width="3" fill="none" /><path d="M 42 100 C 42 38, 158 38, 158 100 Z" fill="#dc2626" /><rect x="55" y="78" width="90" height="24" rx="8" fill="#0f172a" stroke="#cbd5e1" stroke-width="2" /></svg>`,
-  nai_long: `<svg viewBox="0 0 200 220" class="w-full h-full object-contain"><defs><linearGradient id="nlGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#facc15" /><stop offset="100%" stop-color="#eab308" /></linearGradient></defs><path d="M 45 130 C 45 50, 155 50, 155 130 C 155 200, 45 200, 45 130 Z" fill="url(#nlGrad)" stroke="#ca8a04" stroke-width="3" /><ellipse cx="100" cy="145" rx="42" ry="46" fill="#fef08a" /><path d="M 70 55 Q 60 30 75 35 Z" fill="#f59e0b" /><path d="M 130 55 Q 140 30 125 35 Z" fill="#f59e0b" /><circle cx="76" cy="92" r="13" fill="#ffffff" stroke="#1c1917" stroke-width="2" /><circle cx="124" cy="92" r="13" fill="#ffffff" stroke="#1c1917" stroke-width="2" /><circle cx="78" cy="92" r="7" fill="#15803d" /><circle cx="122" cy="92" r="7" fill="#15803d" /><circle cx="80" cy="90" r="2.5" fill="#ffffff" /><circle cx="120" cy="90" r="2.5" fill="#ffffff" /><path d="M 78 112 Q 100 132 122 112 Z" fill="#451a03" stroke="#1c1917" stroke-width="2" /><path d="M 88 112 Q 100 120 112 112 Z" fill="#f43f5e" /></svg>`,
-  nai_wah: `<svg viewBox="0 0 200 220" class="w-full h-full object-contain"><defs><linearGradient id="nwGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#fde047" /><stop offset="100%" stop-color="#eab308" /></linearGradient><linearGradient id="nwHand" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#84cc16" /><stop offset="100%" stop-color="#4d7c0f" /></linearGradient></defs><path d="M 100 20 C 135 20, 162 78, 162 138 C 162 192, 38 192, 38 138 C 38 78, 65 20, 100 20 Z" fill="url(#nwGrad)" stroke="#ca8a04" stroke-width="3" /><ellipse cx="100" cy="132" rx="44" ry="42" fill="#fef9c3" opacity="0.95" /><circle cx="78" cy="62" r="11" fill="#a3e635" stroke="#4d7c0f" stroke-width="1.5" /><circle cx="122" cy="62" r="11" fill="#a3e635" stroke="#4d7c0f" stroke-width="1.5" /><circle cx="78" cy="62" r="7" fill="#15803d" /><circle cx="122" cy="62" r="7" fill="#15803d" /><circle cx="78" cy="62" r="3.5" fill="#0f172a" /><circle cx="122" cy="62" r="3.5" fill="#0f172a" /><circle cx="76" cy="60" r="1.5" fill="#ffffff" /><circle cx="120" cy="60" r="1.5" fill="#ffffff" /><path d="M 96 75 Q 100 78 104 75" stroke="#854d0e" stroke-width="2" fill="none" stroke-linecap="round" /><path d="M 48 120 C 45 138, 62 145, 78 142 M 72 135 L 82 137 M 72 142 L 82 143 M 70 148 L 80 148" stroke="url(#nwHand)" stroke-width="5" fill="none" stroke-linecap="round" /><path d="M 152 120 C 155 138, 138 145, 122 142 M 128 135 L 118 137 M 128 142 L 118 143 M 130 148 L 120 148" stroke="url(#nwHand)" stroke-width="5" fill="none" stroke-linecap="round" /><path d="M 72 184 L 68 202 M 68 202 L 58 205 M 68 202 L 68 206 M 68 202 L 78 205" stroke="url(#nwHand)" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round" /><path d="M 128 184 L 132 202 M 132 202 L 122 205 M 132 202 L 132 206 M 132 202 L 142 205" stroke="url(#nwHand)" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round" /></svg>`,
-  nai_dan: `<svg viewBox="0 0 200 220" class="w-full h-full object-contain"><defs><linearGradient id="ndGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#fef08a" /><stop offset="100%" stop-color="#facc15" /></linearGradient></defs><ellipse cx="100" cy="115" rx="65" ry="58" fill="url(#ndGrad)" stroke="#ca8a04" stroke-width="3.5" /><ellipse cx="100" cy="125" rx="42" ry="38" fill="#ffffff" opacity="0.9" /><circle cx="100" cy="125" r="22" fill="#f97316" /><circle cx="75" cy="95" r="8" fill="#1e293b" /><circle cx="125" cy="95" r="8" fill="#1e293b" /><circle cx="77" cy="93" r="3" fill="#ffffff" /><circle cx="123" cy="93" r="3" fill="#ffffff" /><ellipse cx="62" cy="108" rx="8" ry="5" fill="#f43f5e" opacity="0.5" /><ellipse cx="138" cy="108" rx="8" ry="5" fill="#f43f5e" opacity="0.5" /><path d="M 90 108 Q 100 118 110 108" stroke="#1e293b" stroke-width="3" fill="none" stroke-linecap="round" /></svg>`,
-  roblox: `<svg viewBox="0 0 200 220" class="w-full h-full object-contain"><rect x="30" y="15" width="140" height="190" rx="18" fill="#dc2626" stroke="#991b1b" stroke-width="4" /><rect x="62" y="50" width="76" height="76" rx="10" transform="rotate(-12 100 88)" fill="#ffffff" /><rect x="87" y="75" width="26" height="26" rx="4" transform="rotate(-12 100 88)" fill="#dc2626" /><text x="100" y="172" font-family="'Inter', sans-serif" font-weight="900" font-size="20" fill="#ffffff" text-anchor="middle" letter-spacing="2">ROBLOX</text></svg>`,
-  boba_tea: `<svg viewBox="0 0 200 220" class="w-full h-full object-contain"><polygon points="46,55 154,55 138,205 62,205" fill="#d97706" opacity="0.95" stroke="#78350f" stroke-width="3" /><circle cx="78" cy="175" r="12" fill="#0f172a" /><circle cx="105" cy="182" r="12" fill="#0f172a" /><circle cx="124" cy="168" r="12" fill="#0f172a" /><circle cx="92" cy="160" r="12" fill="#0f172a" /><line x1="100" y1="12" x2="100" y2="190" stroke="#dc2626" stroke-width="14" stroke-linecap="round" /></svg>`,
-  popcat: `<svg viewBox="0 0 200 220" class="w-full h-full object-contain"><ellipse cx="100" cy="120" rx="70" ry="64" fill="#f8fafc" stroke="#0f172a" stroke-width="5" /><polygon points="40,70 25,20 70,55" fill="#f8fafc" stroke="#0f172a" stroke-width="4" /><polygon points="160,70 175,20 130,55" fill="#f8fafc" stroke="#0f172a" stroke-width="4" /><circle cx="70" cy="98" r="9" fill="#000000" /><circle cx="130" cy="98" r="9" fill="#000000" /><circle cx="100" cy="142" r="26" fill="#0f172a" /></svg>`
+  shanshenbu: `<img src="/characters/shanshenbu.svg" alt="絲滑閃身步" class="w-full h-full object-contain pointer-events-none" />`,
+  clapping_cat: `<img src="/characters/clapping_cat.svg" alt="拍手黑貓" class="w-full h-full object-contain pointer-events-none" />`,
+  serious_study: `<img src="/characters/serious_study.svg" alt="嚴肅學習" class="w-full h-full object-contain pointer-events-none" />`,
+  capybara: `<img src="/characters/capybara.svg" alt="水豚" class="w-full h-full object-contain pointer-events-none" />`,
+  chiikawa: `<img src="/characters/chiikawa.svg" alt="吉伊卡哇" class="w-full h-full object-contain pointer-events-none" />`,
+  godzilla: `<img src="/characters/godzilla.svg" alt="哥吉拉" class="w-full h-full object-contain pointer-events-none" />`,
+  mountain_monkey: `<img src="/characters/mountain_monkey.svg" alt="山道猴子" class="w-full h-full object-contain pointer-events-none" />`,
+  nai_long: `<img src="/characters/nai_long.svg" alt="奶龍" class="w-full h-full object-contain pointer-events-none" />`,
+  nai_wah: `<img src="/characters/nai_wah.svg" alt="奶蛙" class="w-full h-full object-contain pointer-events-none" />`,
+  nai_dan: `<img src="/characters/nai_dan.svg" alt="奶蛋" class="w-full h-full object-contain pointer-events-none" />`,
+  roblox: `<img src="/characters/roblox.svg" alt="Roblox" class="w-full h-full object-contain pointer-events-none" />`,
+  boba_tea: `<img src="/characters/boba_tea.svg" alt="珍珠奶茶" class="w-full h-full object-contain pointer-events-none" />`,
+  popcat: `<img src="/characters/popcat.svg" alt="Pop Cat" class="w-full h-full object-contain pointer-events-none" />`
 };
 
 export const DEFAULT_GRAD_HAT = `<svg viewBox="0 0 100 100" class="w-14 h-14 text-amber-700 opacity-80"><path fill="currentColor" d="M50,15 L90,32 L50,49 L10,32 Z M20,42 L20,68 C20,78 80,78 80,68 L80,42 L50,55 Z"/></svg>`;
@@ -388,6 +447,7 @@ export const PINYIN_DICT: Record<string, string> = {
 
 export const HONOR_BADGES = [
   "✨ SUMMA CUM LAUDE (最高榮譽畢業)",
+  "⚡ SILKY DODGE STEP SUPREME (絲滑閃身步特等大師)",
   "👏 APPLAUSE MASTER SUPREME (熱烈鼓掌大師)",
   "🧐 SERIOUS LEARNER RANK 1 (嚴肅學習一級認證)",
   "🌿 CHILLMASTER SUPREME (極致鬆弛感首獎)",

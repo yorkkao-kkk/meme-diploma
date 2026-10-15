@@ -1,0 +1,36 @@
+<svg viewBox="0 0 240 260" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="popFur" cx="50%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="85%" stop-color="#f1f5f9" />
+      <stop offset="100%" stop-color="#cbd5e1" />
+    </radialGradient>
+  </defs>
+
+  <!-- Shadow -->
+  <ellipse cx="120" cy="245" rx="60" ry="10" fill="#000000" opacity="0.25" />
+
+  <!-- Popcat White Head -->
+  <ellipse cx="120" cy="142" rx="82" ry="76" fill="url(#popFur)" stroke="#0f172a" stroke-width="4.5" />
+
+  <!-- Pointy Cat Ears -->
+  <polygon points="52,85 32,24 88,65" fill="#f8fafc" stroke="#0f172a" stroke-width="4" />
+  <polygon points="188,85 208,24 152,65" fill="#f8fafc" stroke="#0f172a" stroke-width="4" />
+  <polygon points="54,80 40,36 80,66" fill="#fca5a5" opacity="0.6" />
+  <polygon points="186,80 200,36 160,66" fill="#fca5a5" opacity="0.6" />
+
+  <!-- Black Round Bead Eyes (Classic wide staring eyes) -->
+  <circle cx="85" cy="115" r="11" fill="#000000" />
+  <circle cx="155" cy="115" r="11" fill="#000000" />
+  <circle cx="82" cy="112" r="3.5" fill="#ffffff" />
+  <circle cx="152" cy="112" r="3.5" fill="#ffffff" />
+
+  <!-- Giant Open "O" Popcat Mouth (招牌大開口 POP!) -->
+  <ellipse cx="120" cy="172" rx="34" ry="34" fill="#0f172a" stroke="#000000" stroke-width="3" />
+  <ellipse cx="120" cy="180" rx="24" ry="18" fill="#881337" />
+
+  <!-- "POP!" Sound effect wave -->
+  <text x="120" y="44" font-family="'Cinzel', 'Arial Black', sans-serif" font-weight="900" font-size="22" fill="#ef4444" text-anchor="middle" letter-spacing="3">POP!</text>
+  <path d="M 68 165 Q 52 172 68 180" stroke="#f59e0b" stroke-width="3" fill="none" stroke-linecap="round" />
+  <path d="M 172 165 Q 188 172 172 180" stroke="#f59e0b" stroke-width="3" fill="none" stroke-linecap="round" />
+</svg>

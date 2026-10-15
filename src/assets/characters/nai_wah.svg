@@ -1,0 +1,43 @@
+<svg viewBox="0 0 240 260" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="nwBody" cx="50%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="60%" stop-color="#fde047" />
+      <stop offset="100%" stop-color="#eab308" />
+    </radialGradient>
+    <linearGradient id="nwGlove" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#a3e635" />
+      <stop offset="100%" stop-color="#4d7c0f" />
+    </linearGradient>
+  </defs>
+
+  <!-- Shadow -->
+  <ellipse cx="120" cy="245" rx="65" ry="10" fill="#000000" opacity="0.25" />
+
+  <!-- Pear-shaped Inflatable Frog Body (奶蛙梨形圓潤大肚) -->
+  <path d="M 120 28 C 160 28, 195 85, 195 155 C 195 220, 45 220, 45 155 C 45 85, 80 28, 120 28 Z" fill="url(#nwBody)" stroke="#ca8a04" stroke-width="3.5" />
+
+  <!-- Pale Yellow Bulging Tummy -->
+  <ellipse cx="120" cy="150" rx="55" ry="50" fill="#fef9c3" opacity="0.95" stroke="#facc15" stroke-width="1.5" />
+
+  <!-- Bug Eyes atop head (青蛙大眼珠) -->
+  <circle cx="94" cy="72" r="14" fill="#a3e635" stroke="#4d7c0f" stroke-width="2" />
+  <circle cx="146" cy="72" r="14" fill="#a3e635" stroke="#4d7c0f" stroke-width="2" />
+  <circle cx="94" cy="72" r="9" fill="#15803d" />
+  <circle cx="146" cy="72" r="9" fill="#15803d" />
+  <circle cx="94" cy="72" r="4.5" fill="#0f172a" />
+  <circle cx="146" cy="72" r="4.5" fill="#0f172a" />
+  <circle cx="92" cy="70" r="2" fill="#ffffff" />
+  <circle cx="144" cy="70" r="2" fill="#ffffff" />
+
+  <!-- Cute Simple Frog Mouth -->
+  <path d="M 112 88 Q 120 94 128 88" stroke="#854d0e" stroke-width="2.5" fill="none" stroke-linecap="round" />
+
+  <!-- Green Inflatable Hands (招牌青蛙綠色手套拍肚肚) -->
+  <path d="M 58 135 C 54 155, 75 165, 94 162 M 88 152 L 100 155 M 88 160 L 100 162 M 86 168 L 98 168" stroke="url(#nwGlove)" stroke-width="6" fill="none" stroke-linecap="round" />
+  <path d="M 182 135 C 186 155, 165 165, 146 162 M 152 152 L 140 155 M 152 160 L 140 162 M 154 168 L 142 168" stroke="url(#nwGlove)" stroke-width="6" fill="none" stroke-linecap="round" />
+
+  <!-- Frog Webbed Feet -->
+  <path d="M 88 212 L 82 232 M 82 232 L 70 236 M 82 232 L 82 238 M 82 232 L 94 236" stroke="url(#nwGlove)" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M 152 212 L 158 232 M 158 232 L 146 236 M 158 232 L 158 238 M 158 232 L 170 236" stroke="url(#nwGlove)" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

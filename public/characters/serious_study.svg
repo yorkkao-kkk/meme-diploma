@@ -1,0 +1,46 @@
+<svg viewBox="0 0 240 260" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="suitG" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+  </defs>
+
+  <!-- Shadow -->
+  <ellipse cx="120" cy="245" rx="60" ry="10" fill="#000000" opacity="0.25" />
+
+  <!-- Suit Body -->
+  <path d="M 50 185 C 50 140, 190 140, 190 185 L 205 242 L 35 242 Z" fill="url(#suitG)" stroke="#0f172a" stroke-width="4" />
+  <!-- White Dress Shirt Collar -->
+  <polygon points="120,150 96,192 144,192" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+  <!-- Crimson Tie -->
+  <polygon points="120,160 110,230 120,242 130,230" fill="#dc2626" stroke="#991b1b" stroke-width="1.5" />
+
+  <!-- Head -->
+  <ellipse cx="120" cy="98" rx="66" ry="58" fill="#fffdfa" stroke="#0f172a" stroke-width="4.5" />
+
+  <!-- Steepled Serious Eyebrows (經典極致緊鎖眉頭) -->
+  <path d="M 68 74 L 112 90" stroke="#0f172a" stroke-width="8" stroke-linecap="round" />
+  <path d="M 172 74 L 128 90" stroke="#0f172a" stroke-width="8" stroke-linecap="round" />
+  <!-- Forehead tension wrinkles -->
+  <path d="M 106 68 Q 120 74 134 68" stroke="#64748b" stroke-width="2.5" fill="none" stroke-linecap="round" />
+
+  <!-- Serious Eyes -->
+  <ellipse cx="94" cy="102" rx="14" ry="11" fill="#ffffff" stroke="#0f172a" stroke-width="3.5" />
+  <ellipse cx="146" cy="102" rx="14" ry="11" fill="#ffffff" stroke="#0f172a" stroke-width="3.5" />
+  <circle cx="94" cy="102" r="6" fill="#0f172a" />
+  <circle cx="146" cy="102" r="6" fill="#0f172a" />
+  <circle cx="92" cy="100" r="2" fill="#ffffff" />
+  <circle cx="144" cy="100" r="2" fill="#ffffff" />
+
+  <!-- Firm Serious Mouth Line -->
+  <line x1="102" y1="128" x2="138" y2="128" stroke="#0f172a" stroke-width="5" stroke-linecap="round" />
+
+  <!-- Steepled Contemplation Hands (沉思托下巴姿勢) -->
+  <path d="M 95 142 Q 120 135 145 142 Q 130 160 120 162 Q 110 160 95 142 Z" fill="#fde68a" stroke="#d97706" stroke-width="2" />
+  <path d="M 112 142 L 112 155 M 120 142 L 120 156 M 128 142 L 128 155" stroke="#b45309" stroke-width="2" stroke-linecap="round" />
+
+  <!-- Text Badge -->
+  <rect x="70" y="24" width="100" height="22" rx="6" fill="#0284c7" />
+  <text x="120" y="39" font-family="'Cinzel', sans-serif" font-weight="900" font-size="10" fill="#ffffff" text-anchor="middle" letter-spacing="1">我將嚴肅學習</text>
+</svg>

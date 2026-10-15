@@ -1,0 +1,43 @@
+<svg viewBox="0 0 240 260" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="eggBody" cx="50%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="60%" stop-color="#facc15" />
+      <stop offset="100%" stop-color="#eab308" />
+    </radialGradient>
+    <radialGradient id="yolkCore" cx="40%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#fb923c" />
+      <stop offset="70%" stop-color="#ea580c" />
+      <stop offset="100%" stop-color="#c2410c" />
+    </radialGradient>
+  </defs>
+
+  <!-- Shadow -->
+  <ellipse cx="120" cy="245" rx="65" ry="10" fill="#000000" opacity="0.25" />
+
+  <!-- Smooth Round Eggshell Outline -->
+  <ellipse cx="120" cy="140" rx="78" ry="70" fill="url(#eggBody)" stroke="#ca8a04" stroke-width="4" />
+
+  <!-- Flowing Custard / Creamy Egg White Core (流心奶黃內餡) -->
+  <ellipse cx="120" cy="150" rx="52" ry="46" fill="#ffffff" opacity="0.95" stroke="#fde047" stroke-width="2" />
+  <!-- Radiant Lava Yolk -->
+  <circle cx="120" cy="150" r="28" fill="url(#yolkCore)" stroke="#ea580c" stroke-width="2" />
+  <!-- Glossy Yolk Highlight -->
+  <ellipse cx="112" cy="140" rx="8" ry="4" fill="#ffffff" opacity="0.75" />
+
+  <!-- Soft Blushing Eyes -->
+  <circle cx="90" cy="112" r="9" fill="#1e293b" />
+  <circle cx="150" cy="112" r="9" fill="#1e293b" />
+  <circle cx="92" cy="110" r="3.5" fill="#ffffff" />
+  <circle cx="152" cy="110" r="3.5" fill="#ffffff" />
+
+  <!-- Rosy Cheeks -->
+  <ellipse cx="74" cy="128" rx="10" ry="6" fill="#f43f5e" opacity="0.6" />
+  <ellipse cx="166" cy="128" rx="10" ry="6" fill="#f43f5e" opacity="0.6" />
+
+  <!-- Gentle Sweet Smile -->
+  <path d="M 108 128 Q 120 138 132 128" stroke="#1e293b" stroke-width="3.5" fill="none" stroke-linecap="round" />
+
+  <!-- Little Custard Drips -->
+  <path d="M 120 178 Q 124 195 120 205 Q 116 195 120 178 Z" fill="#ea580c" />
+</svg>

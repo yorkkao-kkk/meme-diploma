@@ -1,0 +1,46 @@
+<svg viewBox="0 0 240 260" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="helmetGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ef4444" />
+      <stop offset="70%" stop-color="#b91c1c" />
+      <stop offset="100%" stop-color="#7f1d1d" />
+    </linearGradient>
+    <linearGradient id="visorGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="40%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+  </defs>
+
+  <!-- Shadow -->
+  <ellipse cx="120" cy="245" rx="60" ry="10" fill="#000000" opacity="0.3" />
+
+  <!-- Monkey Fur Head & Ears -->
+  <circle cx="120" cy="140" r="62" fill="#78350f" stroke="#451a03" stroke-width="3" />
+  <circle cx="58" cy="135" r="18" fill="#78350f" stroke="#451a03" stroke-width="2" />
+  <circle cx="58" cy="135" r="10" fill="#fef08a" />
+  <circle cx="182" cy="135" r="18" fill="#78350f" stroke="#451a03" stroke-width="2" />
+  <circle cx="182" cy="135" r="10" fill="#fef08a" />
+
+  <!-- Monkey Face Patch -->
+  <ellipse cx="120" cy="155" rx="42" ry="34" fill="#fef08a" />
+  <circle cx="95" cy="145" r="7" fill="#1c1917" />
+  <circle cx="145" cy="145" r="7" fill="#1c1917" />
+  <!-- Confident Grin -->
+  <path d="M 105 168 Q 120 180 135 168" stroke="#1c1917" stroke-width="3.5" fill="none" stroke-linecap="round" />
+
+  <!-- Racing Full-face Helmet (AGV 風格跑山全罩安全帽) -->
+  <path d="M 52 118 C 52 45, 188 45, 188 118 C 188 140, 180 148, 170 148 L 70 148 C 60 148, 52 140, 52 118 Z" fill="url(#helmetGrad)" stroke="#1c1917" stroke-width="3.5" />
+  <!-- Visor (Iridium / Rainbow Tinted Racing Shield) -->
+  <path d="M 66 92 C 66 75, 174 75, 174 92 C 174 122, 66 122, 66 92 Z" fill="url(#visorGrad)" stroke="#cbd5e1" stroke-width="2" />
+  <line x1="80" y1="85" x2="160" y2="85" stroke="#ffffff" stroke-width="2" opacity="0.6" stroke-linecap="round" />
+
+  <!-- Racing Leather Suit Shoulders -->
+  <path d="M 45 200 C 45 165, 195 165, 195 200 L 205 240 L 35 240 Z" fill="#0f172a" stroke="#1e293b" stroke-width="3" />
+  <!-- "莫生氣" Zen Emblem on chest -->
+  <rect x="85" y="195" width="70" height="26" rx="8" fill="#f59e0b" stroke="#b45309" stroke-width="2" />
+  <text x="120" y="213" font-family="'Noto Serif TC', sans-serif" font-weight="900" font-size="12" fill="#78350f" text-anchor="middle">莫生氣</text>
+
+  <!-- Speed lines (台七乙壓車破風) -->
+  <path d="M 25 80 L 45 80 M 20 100 L 48 100 M 195 80 L 215 80 M 192 100 L 220 100" stroke="#f97316" stroke-width="3" stroke-linecap="round" />
+</svg>

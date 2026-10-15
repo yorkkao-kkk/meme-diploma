@@ -1,0 +1,51 @@
+<svg viewBox="0 0 240 260" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="godzillaSkin" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#475569" />
+      <stop offset="70%" stop-color="#334155" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="atomicGlow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="50%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#1d4ed8" />
+    </linearGradient>
+  </defs>
+
+  <!-- Shadow -->
+  <ellipse cx="120" cy="245" rx="75" ry="12" fill="#000000" opacity="0.4" />
+
+  <!-- Glowing Blue Dorsal Spines (背鰭充能閃爍藍光) -->
+  <polygon points="120,18 102,62 138,62" fill="url(#atomicGlow)" stroke="#7dd3fc" stroke-width="2" />
+  <polygon points="120,60 95,108 145,108" fill="url(#atomicGlow)" stroke="#7dd3fc" stroke-width="2.5" />
+  <polygon points="120,105 88,155 152,155" fill="url(#atomicGlow)" stroke="#7dd3fc" stroke-width="2.5" />
+  <polygon points="120,152 82,198 158,198" fill="url(#atomicGlow)" stroke="#7dd3fc" stroke-width="3" />
+
+  <!-- Massive Kaiju Body -->
+  <path d="M 60 230 L 78 85 Q 120 38 162 85 L 180 230 Z" fill="url(#godzillaSkin)" stroke="#090d16" stroke-width="3.5" />
+
+  <!-- Rugged Chest Armor Plates -->
+  <path d="M 90 120 Q 120 135 150 120 L 155 160 Q 120 175 85 160 Z" fill="#1e293b" opacity="0.6" stroke="#0f172a" stroke-width="2" />
+  <path d="M 85 165 Q 120 180 155 165 L 160 205 Q 120 220 80 205 Z" fill="#1e293b" opacity="0.6" stroke="#0f172a" stroke-width="2" />
+
+  <!-- Fierce Eyes -->
+  <circle cx="98" cy="95" r="9" fill="#fef08a" stroke="#0f172a" stroke-width="2.5" />
+  <circle cx="142" cy="95" r="9" fill="#fef08a" stroke="#0f172a" stroke-width="2.5" />
+  <circle cx="98" cy="95" r="4" fill="#0f172a" />
+  <circle cx="142" cy="95" r="4" fill="#0f172a" />
+
+  <!-- Open Roaring Mouth with Atomic Thermal Beam (原子吐息高能光束) -->
+  <path d="M 96 112 Q 120 122 144 112 Q 138 135 120 138 Q 102 135 96 112 Z" fill="#0f172a" />
+  <!-- Sharp Teeth -->
+  <polygon points="102,112 106,120 110,112" fill="#ffffff" />
+  <polygon points="115,112 120,121 125,112" fill="#ffffff" />
+  <polygon points="130,112 134,120 138,112" fill="#ffffff" />
+
+  <!-- Atomic Thermal Ray Shooting Downward Blast -->
+  <path d="M 112 125 L 128 125 L 140 240 L 100 240 Z" fill="url(#atomicGlow)" opacity="0.9" />
+  <line x1="120" y1="125" x2="120" y2="242" stroke="#ffffff" stroke-width="5" opacity="0.95" />
+
+  <!-- Roar Impact Energy Rings -->
+  <ellipse cx="120" cy="180" rx="35" ry="12" fill="none" stroke="#38bdf8" stroke-width="2.5" opacity="0.7" />
+  <ellipse cx="120" cy="210" rx="50" ry="15" fill="none" stroke="#7dd3fc" stroke-width="2" opacity="0.6" />
+</svg>

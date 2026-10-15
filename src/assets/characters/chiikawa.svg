@@ -1,0 +1,53 @@
+<svg viewBox="0 0 240 260" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="chiiFur" cx="50%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="90%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#e2e8f0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Shadow -->
+  <ellipse cx="120" cy="245" rx="55" ry="9" fill="#000000" opacity="0.2" />
+
+  <!-- Round Body -->
+  <ellipse cx="120" cy="148" rx="76" ry="68" fill="url(#chiiFur)" stroke="#0284c7" stroke-width="4.5" />
+
+  <!-- Cute Round Bear Ears -->
+  <ellipse cx="82" cy="88" rx="16" ry="20" fill="#ffffff" stroke="#0284c7" stroke-width="4" />
+  <ellipse cx="158" cy="88" rx="16" ry="20" fill="#ffffff" stroke="#0284c7" stroke-width="4" />
+  <!-- Inner pink ears -->
+  <ellipse cx="82" cy="88" rx="9" ry="12" fill="#f472b6" opacity="0.45" />
+  <ellipse cx="158" cy="88" rx="9" ry="12" fill="#f472b6" opacity="0.45" />
+
+  <!-- Sparkly Huge Anime Eyes -->
+  <circle cx="92" cy="138" r="10" fill="#0f172a" />
+  <circle cx="148" cy="138" r="10" fill="#0f172a" />
+  <!-- Big Eye Gleams -->
+  <circle cx="89" cy="134" r="4" fill="#ffffff" />
+  <circle cx="145" cy="134" r="4" fill="#ffffff" />
+  <circle cx="95" cy="142" r="2" fill="#ffffff" />
+  <circle cx="151" cy="142" r="2" fill="#ffffff" />
+
+  <!-- Shy Blush -->
+  <ellipse cx="74" cy="154" rx="11" ry="7" fill="#f472b6" opacity="0.65" />
+  <ellipse cx="166" cy="154" rx="11" ry="7" fill="#f472b6" opacity="0.65" />
+
+  <!-- Cute W-shaped Mouth -->
+  <path d="M 110 150 Q 120 158 130 150" stroke="#0284c7" stroke-width="3.5" fill="none" stroke-linecap="round" />
+
+  <!-- Little Paws holding Weed Pulling Sickle / Certificate -->
+  <ellipse cx="80" cy="180" rx="9" ry="9" fill="#ffffff" stroke="#0284c7" stroke-width="3" />
+  <ellipse cx="160" cy="180" rx="9" ry="9" fill="#ffffff" stroke="#0284c7" stroke-width="3" />
+
+  <!-- Weed Pulling Badge (拔草一級檢定獎牌) -->
+  <g transform="translate(102, 172)">
+    <circle cx="18" cy="18" r="16" fill="#22c55e" stroke="#15803d" stroke-width="2.5" />
+    <path d="M 18 10 C 14 16, 12 24, 18 26 C 24 24, 22 16, 18 10 Z" fill="#ffffff" />
+    <circle cx="18" cy="22" r="3" fill="#fef08a" />
+  </g>
+
+  <!-- Feet -->
+  <ellipse cx="98" cy="216" rx="12" ry="8" fill="#ffffff" stroke="#0284c7" stroke-width="3" />
+  <ellipse cx="142" cy="216" rx="12" ry="8" fill="#ffffff" stroke="#0284c7" stroke-width="3" />
+</svg>
